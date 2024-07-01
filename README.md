@@ -15,15 +15,23 @@
 
   ---
   1. **강윤석**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com)
-   
+     - 2 problems/week
   2. **김동민**: [Programmers SQL (Level 4, 5)](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com)
+     - 3 problems/week
   3. **김협**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+     - 3 problems/week
   4. **송태원**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank (Intermediate)](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+     - 2 problems/week
   5. **안가현**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank (Basic + Intermediate)](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+     - 2 problems/week
   6. **염수지**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com)
+     - 2 problems/week
   7. **이준호**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank (Intermediate)](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+     - 3 problems/week
   8. **이지윤**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+     - 2 problems/week
   9.  **전상택**: [Programmers SQL](https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit&ref=blog.selectfromuser.com), [HackerRank (Intermediate)](https://www.hackerrank.com/domains/sql?ref=blog.selectfromuser.com)
+      - 3 problems/week
   
   </div>
   </details>
@@ -33,7 +41,8 @@
 
 ### 코드 제출 방식
 **제출 경로**: `Daily_SQL/Week_N/이름_problem_k.sql`
-
+  - *이름은 자유롭게 입력*
+  
 **제출 기한**: `매주 금요일 자정`
 
 ---
