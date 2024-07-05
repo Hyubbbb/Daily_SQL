@@ -1,0 +1,5 @@
+SELECT COUNT(*) AS COUNT
+-- # SELECT *, (GENOTYPE & (1 << 1))
+FROM ECOLI_DATA
+WHERE (GENOTYPE & b'0101') != 0  AND (GENOTYPE & (1 << 1)) = 0
+-- # WHERE (GENOTYPE & (1 << 1)) = 0
