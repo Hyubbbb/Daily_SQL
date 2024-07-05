@@ -1,6 +1,3 @@
-https://school.programmers.co.kr/learn/courses/30/lessons/144853
-
-
 -- 코드를 입력하세요
 SELECT BOOK_ID,  DATE_FORMAT(PUBLISHED_DATE, '%Y-%m-%d') AS PUBLISHED_DATE FROM BOOK
     WHERE PUBLISHED_DATE LIKE '2021-%%-%%'
