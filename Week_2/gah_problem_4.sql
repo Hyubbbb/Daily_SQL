@@ -1,4 +1,4 @@
--- [프로그래머스]
+-- [PROGRAMMERS] String, Date > 조건에 맞는 사용자 정보 공유하기
 
 SELECT u.USER_ID, u.NICKNAME,
        CONCAT(u.CITY, " ", u.STREET_ADDRESS1, " ", u.STREET_ADDRESS2) '전체주소',
