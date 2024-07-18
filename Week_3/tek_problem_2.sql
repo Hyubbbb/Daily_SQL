@@ -1,4 +1,4 @@
--- 프로그래머스 언어별 개발자 분류하기
+-- 프로그래머스 언어별 개발자 분류하기 (비트연산자로 풀이)
 -- https://school.programmers.co.kr/learn/courses/30/lessons/276036
 
 SELECT *
