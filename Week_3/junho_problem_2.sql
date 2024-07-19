@@ -1,0 +1,10 @@
+-- (https://school.programmers.co.kr/learn/courses/30/lessons/293261, Lv.3)
+
+SELECT ID, FISH_NAME, LENGTH
+FROM FISH_INFO
+JOIN FISH_NAME_INFO
+ON FISH_INFO.FISH_TYPE = FISH_NAME_INFO.FISH_TYPE
+WHERE (FISH_INFO.FISH_TYPE,FISH_INFO.LENGTH) IN (SELECT FISH_TYPE, MAX(LENGTH)
+                             FROM FISH_INFO
+                             GROUP BY FISH_TYPE)
+ORDER BY ID;
