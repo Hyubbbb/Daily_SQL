@@ -1,0 +1,15 @@
+-- 프로그래머스 년, 월, 성별 별 상품 구매 회원 수 구하기
+-- https://school.programmers.co.kr/learn/courses/30/lessons/131532
+
+SELECT YEAR(O.SALES_DATE) AS YEAR, 
+    MONTH(O.SALES_DATE) AS MONTH, 
+    U.GENDER AS GENDER,
+    -- 중복된 USER_ID를 제거하고 COUNT
+    COUNT(DISTINCT O.USER_ID) AS USERS
+FROM USER_INFO AS U
+INNER JOIN ONLINE_SALE AS O
+    ON U.USER_ID = O.USER_ID
+-- 성별 정보가 없는 경우 결과에서 제외
+WHERE U.GENDER IS NOT NULL
+GROUP BY YEAR(O.SALES_DATE), MONTH(O.SALES_DATE), U.GENDER
+ORDER BY YEAR, MONTH, GENDER
