@@ -58,7 +58,7 @@
 - **제출 완료**: ✅
 - **지각 제출**: ⏰
 - **미제출**: ❌
-- [🐖 저금통 현황 확인하기](https://tartan-text-a3d.notion.site/SQL-bca85556163941be92c4e0e91ffcdcb5?pvs=4)
+- [🐖 저금통 현황 확인하기](https://tartan-text-a3d.notion.site/SQL-acf9c7bf40a741d3b3b72a1948211162?pvs=4)
   
   </div>
   </details>
