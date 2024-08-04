@@ -1,0 +1,49 @@
+-- # Table 1: SKILLCODES
+-- # Table 2: DEVELOPERS
+
+-- # GRADE가 존재하는 개발자의 GRADE, ID, EMAIL을 조회
+--     # 결과는 GRADE와 ID를 기준으로 오름차순 정렬
+
+-- # GRADE
+--     # A: SKILLCODES의 CATEGORY가 Front End인 걸 하나라도 & NAME이 Python
+--     # B: NAME이 C#
+--     # C: 그 외의 CATEGORY가 Front End
+
+WITH 
+GRADE_FRONT AS(
+SELECT SUM(CODE)
+FROM SKILLCODES
+WHERE CATEGORY = 'Front End'
+),
+
+GRADE_Python AS(
+SELECT CODE
+FROM SKILLCODES
+WHERE NAME = 'Python'
+),
+
+GRADE_C AS(
+SELECT CODE
+FROM SKILLCODES
+WHERE NAME = 'C#'
+)
+
+-- # SELECT *
+-- # FROM GRADE_C
+
+SELECT 
+       CASE 
+       WHEN (((SKILL_CODE & (SELECT * FROM GRADE_FRONT)) > 0)  AND ((SKILL_CODE & (SELECT * FROM GRADE_Python)) > 0)) THEN "A"
+       WHEN ((SKILL_CODE & (SELECT * FROM GRADE_C)) > 0) THEN "B"
+       WHEN ((SKILL_CODE & (SELECT * FROM GRADE_FRONT)) > 0) THEN "C"
+       ELSE NULL
+       END
+       AS GRADE,
+       ID,
+       EMAIL
+       
+FROM DEVELOPERS
+HAVING GRADE IS NOT NULL
+ORDER BY GRADE, ID
+
+
