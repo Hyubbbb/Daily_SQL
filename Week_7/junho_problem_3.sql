@@ -1,0 +1,18 @@
+-- (https://school.programmers.co.kr/learn/courses/30/lessons/284528, Lv.4)
+
+SELECT e.EMP_NO, e.EMP_NAME,
+CASE WHEN AVG(g.SCORE) >= 96 THEN 'S'
+WHEN AVG(g.SCORE) >= 90 THEN 'A'
+WHEN AVG(g.SCORE) >= 80 THEN 'B'
+ELSE 'C'
+END AS GRADE,
+CASE WHEN AVG(g.SCORE) >= 96 THEN e.SAL * 0.2
+WHEN AVG(g.SCORE) >= 90 THEN e.SAL * 0.15
+WHEN AVG(g.SCORE) >= 80 THEN e.SAL * 0.1
+ELSE 0
+END AS BONUS
+FROM HR_EMPLOYEES as e
+JOIN HR_GRADE as g
+ON e.EMP_NO = g.EMP_NO
+GROUP BY 1,2
+ORDER BY 1;
