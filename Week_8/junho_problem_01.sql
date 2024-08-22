@@ -1,0 +1,8 @@
+-- (https://school.programmers.co.kr/learn/courses/30/lessons/284529, Lv.3)
+
+SELECT d.DEPT_ID,d.DEPT_NAME_EN, ROUND(AVG(e.SAL)) AS AVG_SAL
+FROM HR_DEPARTMENT AS d
+JOIN HR_EMPLOYEES AS e
+ON d.DEPT_ID = e.DEPT_ID
+GROUP BY 1,2
+ORDER BY 3 DESC;
