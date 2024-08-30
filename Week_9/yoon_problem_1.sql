@@ -1,0 +1,10 @@
+SELECT DISTINCT O.USER_ID AS USER_ID, O.PRODUCT_ID AS PRODUCT_ID
+FROM ONLINE_SALE O
+WHERE
+    (
+        SELECT COUNT(*)
+        FROM ONLINE_SALE OS
+        WHERE O.USER_ID = OS.USER_ID AND O.PRODUCT_ID = OS.PRODUCT_ID
+    ) > 1
+ORDER BY USER_ID, PRODUCT_ID DESC
+출처: https://thisismi.tistory.com/entry/프로그래머스-SQL-고득점-Kit-SELECT문-정답-모음 [This is Mi:티스토리]
