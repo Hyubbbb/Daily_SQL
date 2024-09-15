@@ -1,5 +1,5 @@
---https://school.programmers.co.kr/learn/courses/30/lessons/164673
---DATE_FORMAT
+-- https://school.programmers.co.kr/learn/courses/30/lessons/164673
+-- DATE_FORMAT
 SELECT B.TITLE, B.BOARD_ID, R.REPLY_ID, R.WRITER_ID, R.CONTENTS, DATE_FORMAT(R.CREATED_DATE,'%Y-%m-%d') AS CREATED_DATE
 FROM USED_GOODS_BOARD B
 INNER JOIN USED_GOODS_REPLY R
