@@ -1,0 +1,6 @@
+-- LEVEL2 : NULL 처리하기
+
+SELECT ANIMAL_TYPE, IFNULL(NAME,'No name') AS NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS;
+
+/* IFNULL(A,B) : A가 NULL이면 B를, 아니면 A를 그대로 반환 */
