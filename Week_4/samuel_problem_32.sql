@@ -1,0 +1,17 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/301650
+-- 이중 중첩, EXISTS 함수 사용
+
+SELECT ECC.ID
+FROM ECOLI_DATA ECC
+WHERE EXISTS(
+    SELECT 1
+    FROM ECOLI_DATA EC
+    WHERE ECC.PARENT_ID = EC.ID
+    AND EXISTS (
+    SELECT 1
+    FROM ECOLI_DATA E
+    WHERE EC.PARENT_ID = E.ID
+    AND E.PARENT_ID IS NULL
+    )
+)
+ORDER BY ECC.ID ASC;

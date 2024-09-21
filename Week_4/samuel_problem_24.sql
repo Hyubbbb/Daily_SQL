@@ -1,0 +1,9 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/293258
+-- CASE WHEN _________ THEN 1 END syntax
+
+SELECT COUNT(CASE WHEN LENGTH IS NULL THEN 1 END) AS FISH_COUNT
+FROM FISH_INFO
+
+-- SELECT COUNT(ID) AS FISH_COUNT
+-- FROM FISH_INFO
+-- WHERE LENGTH IS NULL;
