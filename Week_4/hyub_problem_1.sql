@@ -1,0 +1,6 @@
+-- https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFullScreen=true
+
+SELECT MONTHS * SALARY, COUNT(*)
+FROM EMPLOYEE
+WHERE MONTHS * SALARY = (SELECT MONTHS * SALARY AS TOTAL FROM EMPLOYEE ORDER BY TOTAL DESC LIMIT 1)
+GROUP BY MONTHS * SALARY
