@@ -1,0 +1,14 @@
+SELECT A.X AS X, A.Y AS Y
+FROM Functions A
+    JOIN Functions B
+    ON A.X = B.Y AND A.Y = B.X
+WHERE A.X < A.Y
+
+UNION 
+
+SELECT X, Y
+FROM Functions
+WHERE X = Y
+GROUP BY X, Y HAVING COUNT(*) > 1
+
+ORDER BY X;
