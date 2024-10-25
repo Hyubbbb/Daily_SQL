@@ -1,5 +1,5 @@
 ```sql
--- 코드를 작성해주세요
+-- 물고기 종류 별 대어 찾기
 SELECT 
     fi.ID, 
     fn.FISH_NAME, 
