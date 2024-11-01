@@ -1,0 +1,19 @@
+```sql
+-- 즐겨찾기가 가장 많은 식당 출력
+SELECT 
+    r.FOOD_TYPE, 
+    r.REST_ID, 
+    r.REST_NAME, 
+    r.FAVORITES
+FROM 
+    REST_INFO r
+JOIN 
+    (SELECT FOOD_TYPE, MAX(FAVORITES) AS MAX_FAVORITES
+     FROM REST_INFO
+     GROUP BY FOOD_TYPE) m
+ON 
+    r.FOOD_TYPE = m.FOOD_TYPE 
+    AND r.FAVORITES = m.MAX_FAVORITES
+ORDER BY 
+    r.FOOD_TYPE DESC;
+```
