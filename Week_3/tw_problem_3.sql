@@ -4,6 +4,7 @@
 -- 어떻게 만원 단위로 쪼개지? => 우연인지 노션 가계부 작성하면서 FLOOR함수 형식을 사용해 소수점을 제거하고 있는데 그 방법으로 각 가격대의 맨 앞자리 수만 남기고 다시 10000원을 곱해주는 방식으로 해결할 수 있겠더라
 -- 직접 집계함수를 활용해 데이터를 원하는 형식으로 수정
 
+
 SELECT FLOOR(PRICE/10000)*10000 AS PRICE_GROUP,  COUNT(*) AS PRODUCTS
 FROM PRODUCT
 GROUP BY PRICE_GROUP
