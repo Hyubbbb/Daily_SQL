@@ -1,0 +1,6 @@
+SELECT D.Dname, COUNT(*)
+FROM EMP E
+JOIN DEP D
+ON E.Dno = D.Dnum
+GROUP BY E.Dno
+HAVING AVG(salary) >= 30000;
