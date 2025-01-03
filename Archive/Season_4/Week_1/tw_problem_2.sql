@@ -1,4 +1,3 @@
--- 코드를 작성해주세요
 
 WITH new AS(
 SELECT FISH_TYPE,
