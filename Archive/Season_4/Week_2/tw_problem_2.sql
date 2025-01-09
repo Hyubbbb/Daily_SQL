@@ -1,0 +1,15 @@
+-- idea: 1세대를 찾고 서브쿼리를 이어나가면서 3세대까지 select
+
+-- 1세대: 1, 2
+-- 2세대: 3, 4, 5
+-- 3세대: 6, 7
+
+SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IN (SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IN (
+    SELECT ID
+    FROM ECOLI_DATA
+    WHERE PARENT_ID IS NULL))
+ORDER BY ID
