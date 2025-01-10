@@ -1,0 +1,3 @@
+-- Programmers > SELECT > 여러 기준으로 정렬하기
+  SELECT ANIMAL_ID, DATETIME
+  ORDER BY NAME ASC, DATETIME DESC;
