@@ -1,0 +1,4 @@
+-- Programmers > SELECT > Python 개발자 찾기
+  SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+  FROM DEVELOPER_INFOS
+  ORDER BY ID ASC;
