@@ -1,0 +1,19 @@
+-- Programmers > SELECT > 조건에 부합하는 중고거래 댓글 조회하기
+-- https://school.programmers.co.kr/learn/courses/30/lessons/164673#qna
+-- INNER JOIN이라서 WHEREDP R.CREATED_DATE가 아니라 B.CREATED_DATE로 했어야 함
+SELECT 
+    B.TITLE, 
+    B.BOARD_ID, 
+    R.REPLY_ID, 
+    R.WRITER_ID, 
+    R.CONTENTS, 
+    DATE_FORMAT(R.CREATED_DATE, '%Y-%m-%d') AS CREATED_DATE
+FROM 
+    USED_GOODS_BOARD B
+INNER JOIN 
+    USED_GOODS_REPLY R ON B.BOARD_ID = R.BOARD_ID
+WHERE 
+    DATE(B.CREATED_DATE) BETWEEN '2022-10-01' AND '2022-10-31'
+ORDER BY 
+    R.CREATED_DATE ASC, 
+    B.TITLE ASC;
