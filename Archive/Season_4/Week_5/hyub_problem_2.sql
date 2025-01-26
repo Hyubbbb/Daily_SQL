@@ -1,4 +1,4 @@
--- https://solvesql.com/problems/number-of-friends/
+-- https://solvesql.com/problems/number-of-friends/ 
 
 WITH t_cnt_a AS (
   SELECT
