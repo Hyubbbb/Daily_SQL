@@ -1,0 +1,8 @@
+-- String, Date: 오랜 기간 보호한 동물(2)
+-- https://school.programmers.co.kr/learn/courses/30/lessons/59411
+
+SELECT AI.ANIMAL_ID, AI.NAME
+FROM ANIMAL_INS AI
+JOIN ANIMAL_OUTS AO ON AI.ANIMAL_ID = AO.ANIMAL_ID
+ORDER BY DATEDIFF(AO.DATETIME, AI.DATETIME) DESC
+LIMIT 2;
