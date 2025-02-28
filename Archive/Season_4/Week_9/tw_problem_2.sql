@@ -10,3 +10,4 @@ GROUP BY hacker_id, name
 HAVING SUM(score) > 0
 ORDER BY total_score desc, hacker_id
  
+-- 왜 자꾸 런타임 에러가 하
