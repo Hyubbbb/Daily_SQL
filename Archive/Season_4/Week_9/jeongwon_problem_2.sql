@@ -1,0 +1,9 @@
+-- JOIN: 주문량이 많은 아이스크림들 조회하기
+-- https://school.programmers.co.kr/learn/courses/30/lessons/133027
+
+SELECT FH.FLAVOR
+FROM FIRST_HALF FH
+LEFT JOIN JULY J ON FH.FLAVOR = J.FLAVOR
+GROUP BY FH.FLAVOR
+ORDER BY (FH.TOTAL_ORDER + COALESCE(SUM(J.TOTAL_ORDER), 0)) DESC
+LIMIT 3;
