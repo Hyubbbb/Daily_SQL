@@ -1,3 +1,5 @@
+-- https://solvesql.com/problems/redefine-session/
+
 WITH lagged_events AS (
   SELECT
     user_pseudo_id,
