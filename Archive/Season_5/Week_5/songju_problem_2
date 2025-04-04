@@ -1,0 +1,8 @@
+--https://solvesql.com/problems/sales-summary/
+
+SELECT ROUND(AVG(day_sales), 2) AS avg_sales
+FROM (
+    SELECT day, SUM(total_bill) AS day_sales
+    FROM tips
+    GROUP BY day
+) AS daily;
