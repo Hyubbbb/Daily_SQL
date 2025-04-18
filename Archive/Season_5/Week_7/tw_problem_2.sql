@@ -1,0 +1,4 @@
+SELECT MAX(POPULATION) - MIN(POPULATION)
+FROM CITY
+
+-- 너무 쉬운거만 올려서,,다시 제대로 해보자
