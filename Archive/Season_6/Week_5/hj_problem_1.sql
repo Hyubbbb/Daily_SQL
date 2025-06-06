@@ -1,0 +1,10 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/276035
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS D
+WHERE EXISTS (
+  SELECT 1
+  FROM SKILLCODES S
+  WHERE (D.SKILL_CODE & S.CODE) = S.CODE
+    AND S.CATEGORY = 'Front End'
+)
+ORDER BY ID ASC;
