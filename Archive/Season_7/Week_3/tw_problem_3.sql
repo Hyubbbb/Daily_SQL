@@ -1,6 +1,6 @@
 SELECT c.student_id, c.student_name, b.subject_name, COUNT(a.subject_name) AS "attended_exams"
 FROM Students c
-CROSS JOIN Subjects b 
+CROSS JOIN Subjects b  
 -- 세 과목명은 무조건 포함되어야 하기에
 -- CROSS JOIN이 아니면 0인 값이 포함이 안됨
 
