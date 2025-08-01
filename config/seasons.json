@@ -1,0 +1,46 @@
+{
+  "seasons": {
+    "7": {
+      "start_date": "2025-06-28",
+      "end_date": "2025-08-30",
+      "weeks": 9,
+      "active": true
+    },
+    "6": {
+      "start_date": "2025-05-03",
+      "end_date": "2025-06-27",
+      "weeks": 8,
+      "active": false
+    },
+    "5": {
+      "start_date": "2025-03-01",
+      "end_date": "2025-05-02",
+      "weeks": 9,
+      "active": false
+    },
+    "4": {
+      "start_date": "2024-12-28",
+      "end_date": "2025-02-28",
+      "weeks": 9,
+      "active": false
+    },
+    "3": {
+      "start_date": "2024-11-02",
+      "end_date": "2024-12-27",
+      "weeks": 8,
+      "active": false
+    },
+    "2": {
+      "start_date": "2024-08-31",
+      "end_date": "2024-11-01",
+      "weeks": 9,
+      "active": false
+    },
+    "1": {
+      "start_date": "2024-06-28",
+      "end_date": "2024-08-30",
+      "weeks": 9,
+      "active": false
+    }
+  }
+} 

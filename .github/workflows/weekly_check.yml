@@ -1,0 +1,50 @@
+name: Weekly SQL Submission Check
+
+on:
+  schedule:
+    # 한국 시간 금요일 자정
+    - cron: '0 15 * * 4'
+  workflow_dispatch: # 수동 실행 가능
+  push:
+    branches: [ main ]
+    paths:
+      - 'config/participants.json'
+      - 'scripts/**'
+
+jobs:
+  check-submissions:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+    - name: Run SQL submission checker
+      run: |
+        python scripts/main.py
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git commit -m "Update weekly submission status [skip ci]" || exit 0
+        git push
+        
+    - name: Create summary
+      run: |
+        echo "## Weekly SQL Submission Check Complete" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Submission status checked" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ README updated" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Discord notification sent" >> $GITHUB_STEP_SUMMARY 
