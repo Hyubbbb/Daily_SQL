@@ -23,7 +23,7 @@ logging.basicConfig(
 )
 
 class SubmissionChecker:
-    def __init__(self, config_path: str = "config/participants.json"):
+    def __init__(self, config_path: str = "../config/participants.json"):
         """제출 현황 확인기 초기화"""
         self.config_path = config_path
         self.load_config()

@@ -8,8 +8,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'config/participants.json'
-      - 'scripts/**'
+      - 'Agent/config/participants.json'
+      - 'Agent/scripts/**'
 
 jobs:
   check-submissions:
@@ -29,19 +29,19 @@ jobs:
         
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        pip install -r Agent/requirements.txt
         
     - name: Run SQL submission checker
       run: |
-        python scripts/main.py
+        python Agent/scripts/main.py
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         
     - name: Get current week info
       id: week-info
       run: |
-        CURRENT_WEEK=$(python -c "import json; print(json.load(open('config/participants.json'))['current_week'])")
-        CURRENT_SEASON=$(python -c "import json; print(json.load(open('config/participants.json'))['current_season'])")
+        CURRENT_WEEK=$(python -c "import json; print(json.load(open('Agent/config/participants.json'))['current_week'])")
+        CURRENT_SEASON=$(python -c "import json; print(json.load(open('Agent/config/participants.json'))['current_season'])")
         echo "week=$CURRENT_WEEK" >> $GITHUB_OUTPUT
         echo "season=$CURRENT_SEASON" >> $GITHUB_OUTPUT
         
@@ -60,4 +60,5 @@ jobs:
         echo "## Weekly SQL Submission Check Complete" >> $GITHUB_STEP_SUMMARY
         echo "- ✅ Submission status checked" >> $GITHUB_STEP_SUMMARY
         echo "- ✅ README updated" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Discord notification sent" >> $GITHUB_STEP_SUMMARY 
+        echo "- ✅ Discord notification sent" >> $GITHUB_STEP_SUMMARY
+        echo "- 📅 Week auto-increment: Enabled" >> $GITHUB_STEP_SUMMARY 

@@ -145,7 +145,7 @@ def main():
     """메인 실행 함수"""
     try:
         # 설정 파일에서 현재 시즌/주차 정보 로드
-        with open("config/participants.json", 'r', encoding='utf-8') as f:
+        with open("../config/participants.json", 'r', encoding='utf-8') as f:
             config = json.load(f)
         
         current_season = config['current_season']

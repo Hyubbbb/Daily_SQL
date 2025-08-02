@@ -8,7 +8,7 @@ import os
 import sys
 import logging
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 # 스크립트 디렉토리를 Python 경로에 추가
@@ -17,6 +17,42 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from submission_checker import SubmissionChecker
 from readme_updater import ReadmeUpdater
 from discord_notifier import DiscordNotifier
+
+def should_increment_week() -> bool:
+    """금요일 자정 후인지 확인하여 주차 증가 여부 결정"""
+    now = datetime.now()
+    
+    # 금요일인지 확인 (월요일=0, 금요일=4)
+    if now.weekday() != 4:  # 금요일이 아니면 False
+        return False
+    
+    # 자정 이후인지 확인 (00:00 ~ 06:00 사이)
+    if now.hour < 6:  # 자정 후 6시간 이내
+        return True
+    
+    return False
+
+def update_week_in_config(config_path: str, current_week: int) -> bool:
+    """설정 파일에서 current_week를 증가시키고 저장"""
+    try:
+        # 설정 파일 읽기
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        
+        # 주차 증가
+        new_week = current_week + 1
+        config['current_week'] = new_week
+        
+        # 설정 파일 저장
+        with open(config_path, 'w', encoding='utf-8') as f:
+            json.dump(config, f, ensure_ascii=False, indent=2)
+        
+        logging.info(f"주차 자동 증가: {current_week} → {new_week}")
+        return True
+        
+    except Exception as e:
+        logging.error(f"주차 증가 중 오류 발생: {e}")
+        return False
 
 # 로깅 설정
 logging.basicConfig(
@@ -35,13 +71,24 @@ def main():
     
     try:
         # 1. 설정 파일 로드
-        with open("config/participants.json", 'r', encoding='utf-8') as f:
+        with open("../config/participants.json", 'r', encoding='utf-8') as f:
             config = json.load(f)
         
         current_season = config['current_season']
         current_week = config['current_week']
         
         logging.info(f"현재 시즌: {current_season}, 주차: {current_week}")
+        
+        # 주차 자동 증가 확인
+        if should_increment_week():
+            logging.info("금요일 자정 후 감지 - 주차 자동 증가 시작")
+            if update_week_in_config("../config/participants.json", current_week):
+                current_week += 1
+                logging.info(f"주차 증가 완료: {current_week}")
+            else:
+                logging.warning("주차 증가 실패 - 기존 주차로 진행")
+        else:
+            logging.info("주차 자동 증가 조건 미충족 - 기존 주차 유지")
         
         # 2. 제출 현황 확인 (현재 주차)
         logging.info("1단계: 제출 현황 확인 시작")
@@ -113,7 +160,7 @@ def test_individual_components():
     
     try:
         # 설정 파일 테스트
-        with open("config/participants.json", 'r', encoding='utf-8') as f:
+        with open("../config/participants.json", 'r', encoding='utf-8') as f:
             config = json.load(f)
         print("✅ 설정 파일 로드 성공")
         

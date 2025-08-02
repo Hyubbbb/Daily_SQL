@@ -1,4 +1,4 @@
-# Python 관련
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -20,24 +20,23 @@ wheels/
 .installed.cfg
 *.egg
 
-# 로그 파일
+# Logs
 *.log
+submission_check.log
+automation.log
 
-# 백업 파일
+# Results
+results/
+
+# Backup files
 README_backup_*.md
 
-# macOS
+# OS
 .DS_Store
-.AppleDouble
-.LSOverride
+Thumbs.db
 
 # IDE
 .vscode/
 .idea/
 *.swp
-*.swo
-*~
-
-# 임시 파일
-*.tmp
-*.temp 
+*.swo 
