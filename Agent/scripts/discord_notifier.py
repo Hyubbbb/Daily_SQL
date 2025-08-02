@@ -42,10 +42,10 @@ class DiscordNotifier:
             return False
         
         try:
-            # 참여자 목록 로드
+            # 참여자 목록 로드 (활성 참가자만)
             with open("../config/participants.json", 'r', encoding='utf-8') as f:
                 config = json.load(f)
-            participants = [p['name'] for p in config['participants']]
+            participants = [p['name'] for p in config['participants'] if p.get('active', True)]
             
             # 랜덤 멤버 선택
             import random

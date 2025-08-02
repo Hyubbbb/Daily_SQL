@@ -8,31 +8,36 @@
       "name": "김협",
       "file_prefix": "hyub",
       "required_problems": 2,
-      "discord_id": "123456789"
+      "discord_id": "123456789",
+      "active": true
     },
     {
       "name": "송태원",
       "file_prefix": "tw",
       "required_problems": 2,
-      "discord_id": "987654321"
+      "discord_id": "987654321",
+      "active": true
     },
     {
       "name": "이지윤",
       "file_prefix": "jiyun",
       "required_problems": 2,
-      "discord_id": "456789123"
+      "discord_id": "456789123",
+      "active": true
     },
     {
       "name": "송채원",
       "file_prefix": "chaewon",
       "required_problems": 3,
-      "discord_id": "789123456"
+      "discord_id": "789123456",
+      "active": true
     },
     {
       "name": "이형주",
       "file_prefix": "hj",
       "required_problems": 2,
-      "discord_id": "321654987"
+      "discord_id": "321654987",
+      "active": true
     }
   ]
 } 

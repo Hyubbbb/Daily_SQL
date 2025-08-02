@@ -54,6 +54,10 @@ class SubmissionChecker:
             return results
         
         for participant in self.config['participants']:
+            # 활성 참가자만 처리
+            if not participant.get('active', True):  # active가 없으면 기본값 True
+                continue
+                
             name = participant['name']
             prefix = participant['file_prefix']
             required = participant['required_problems']
@@ -106,6 +110,10 @@ class SubmissionChecker:
             return results
         
         for participant in self.config['participants']:
+            # 활성 참가자만 처리
+            if not participant.get('active', True):  # active가 없으면 기본값 True
+                continue
+                
             name = participant['name']
             prefix = participant['file_prefix']
             required = participant['required_problems']
