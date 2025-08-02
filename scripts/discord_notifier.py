@@ -52,7 +52,7 @@ class DiscordNotifier:
             random_member = random.choice(participants)
             
             # 메시지 생성
-            message = "[TEST] Github Action으로 발송된 메시지입니다."
+            message = "[TEST] Github Action으로 발송된 메시지입니다. (아직 잘못된 정보가 포함되어 있을 수 있습니다.)\n\n"
             message += f"**🙌🏻 {week}주차 제출 현황 업데이트 완료입니다 ! 🙌🏻**\n\n"
             message += f"### ✈️ {week+1}주차 시작\n"
             message += f"🏋🏻 {week+1}주차 오SQL완도 파이팅입니다 🏋🏻\n\n"
