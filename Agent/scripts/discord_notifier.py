@@ -21,7 +21,6 @@ class DiscordNotifier:
     def __init__(self, webhook_url: str = None):
         """디스코드 알림기 초기화"""
         self.webhook_url = webhook_url or os.getenv('DISCORD_WEBHOOK_URL')
-        # https://discord.com/api/webhooks/1400749858922696804/g-R9Hz6N8bJ7lL32T-IgwIf0k3b-OsnrTlhDNmrzImXZzqGocvxw3hUIb1OGVSqNDVyY
         if not self.webhook_url:
             logging.warning("디스코드 웹훅 URL이 설정되지 않았습니다")
     
