@@ -1,7 +1,7 @@
 {
   "season": 7,
   "week": 6,
-  "check_time": "2025-08-09T06:15:08.347186",
+  "check_time": "2025-08-09T06:23:53.392960",
   "results": {
     "김협": {
       "status": "✅",
@@ -45,7 +45,7 @@
       "file_prefix": "chaewon"
     },
     "이형주": {
-      "status": "❌",
+      "status": "-",
       "submitted": 0,
       "required": 2,
       "files": [],
