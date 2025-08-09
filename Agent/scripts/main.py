@@ -107,6 +107,21 @@ def main():
             return False
         
         logging.info(f"현재 주차 제출 현황 확인 완료: {len(current_results)}명")
+
+        # 현재 주차 결과 저장 (README, Discord 등 외부에서도 참고 가능하도록)
+        try:
+            current_output_file = RESULTS_DIR / f"season_{current_season}_week_{current_week}_results.json"
+            RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+            with open(current_output_file, 'w', encoding='utf-8') as f:
+                json.dump({
+                    'season': current_season,
+                    'week': current_week,
+                    'check_time': datetime.now().isoformat(),
+                    'results': current_results
+                }, f, ensure_ascii=False, indent=2)
+            logging.info(f"현재 주차 결과 저장 완료: {current_output_file}")
+        except Exception as e:
+            logging.warning(f"현재 주차 결과 저장 실패: {e}")
         
         # 3. 이전 주차 제출 현황 확인 (지각 제출 판단용)
         if current_week > 1:
