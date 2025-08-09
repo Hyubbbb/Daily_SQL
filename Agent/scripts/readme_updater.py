@@ -16,13 +16,19 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+SCRIPT_DIR = Path(__file__).resolve().parent           # Agent/scripts
+AGENT_DIR = SCRIPT_DIR.parent                          # Agent
+REPO_ROOT = AGENT_DIR.parent                           # repo root
+RESULTS_DIR = AGENT_DIR / "results"
+README_PATH = REPO_ROOT / "README.md"
+
 class ReadmeUpdater:
-    def __init__(self, readme_path: str = "README.md"):
+    def __init__(self, readme_path: Path = README_PATH):
         self.readme_path = readme_path
         
     def load_results(self, season: int, week: int) -> Dict[str, Any]:
         """결과 파일 로드"""
-        results_file = f"results/season_{season}_week_{week}_results.json"
+        results_file = RESULTS_DIR / f"season_{season}_week_{week}_results.json"
         try:
             with open(results_file, 'r', encoding='utf-8') as f:
                 return json.load(f)

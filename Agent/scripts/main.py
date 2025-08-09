@@ -18,6 +18,13 @@ from submission_checker import SubmissionChecker
 from readme_updater import ReadmeUpdater
 from discord_notifier import DiscordNotifier
 
+# 경로 상수 설정
+SCRIPT_DIR = Path(__file__).resolve().parent           # Agent/scripts
+AGENT_DIR = SCRIPT_DIR.parent                          # Agent
+REPO_ROOT = AGENT_DIR.parent                           # repo root
+CONFIG_PARTICIPANTS = AGENT_DIR / "config" / "participants.json"
+RESULTS_DIR = AGENT_DIR / "results"
+
 def should_increment_week() -> bool:
     """금요일 자정 후인지 확인하여 주차 증가 여부 결정"""
     now = datetime.now()
@@ -32,7 +39,7 @@ def should_increment_week() -> bool:
     
     return False
 
-def update_week_in_config(config_path: str, current_week: int) -> bool:
+def update_week_in_config(config_path: Path, current_week: int) -> bool:
     """설정 파일에서 current_week를 증가시키고 저장"""
     try:
         # 설정 파일 읽기
@@ -71,7 +78,7 @@ def main():
     
     try:
         # 1. 설정 파일 로드
-        with open("../config/participants.json", 'r', encoding='utf-8') as f:
+        with open(CONFIG_PARTICIPANTS, 'r', encoding='utf-8') as f:
             config = json.load(f)
         
         current_season = config['current_season']
@@ -82,7 +89,7 @@ def main():
         # 주차 자동 증가 확인
         if should_increment_week():
             logging.info("금요일 자정 후 감지 - 주차 자동 증가 시작")
-            if update_week_in_config("../config/participants.json", current_week):
+            if update_week_in_config(CONFIG_PARTICIPANTS, current_week):
                 current_week += 1
                 logging.info(f"주차 증가 완료: {current_week}")
             else:
@@ -160,7 +167,7 @@ def test_individual_components():
     
     try:
         # 설정 파일 테스트
-        with open("../config/participants.json", 'r', encoding='utf-8') as f:
+        with open(CONFIG_PARTICIPANTS, 'r', encoding='utf-8') as f:
             config = json.load(f)
         print("✅ 설정 파일 로드 성공")
         

@@ -22,10 +22,18 @@ logging.basicConfig(
     ]
 )
 
+SCRIPT_DIR = Path(__file__).resolve().parent           # Agent/scripts
+AGENT_DIR = SCRIPT_DIR.parent                          # Agent
+REPO_ROOT = AGENT_DIR.parent                           # repo root
+CONFIG_PARTICIPANTS = AGENT_DIR / "config" / "participants.json"
+CONFIG_SEASONS = AGENT_DIR / "config" / "seasons.json"
+RESULTS_DIR = AGENT_DIR / "results"
+ARCHIVE_DIR = REPO_ROOT / "Archive"
+
 class SubmissionChecker:
-    def __init__(self, config_path: str = "../config/participants.json"):
+    def __init__(self, config_path: Path = CONFIG_PARTICIPANTS):
         """제출 현황 확인기 초기화"""
-        self.config_path = config_path
+        self.config_path = Path(config_path)
         self.load_config()
         
     def load_config(self):
@@ -46,10 +54,10 @@ class SubmissionChecker:
         logging.info(f"Season {season} Week {week} 제출 현황 확인 시작")
         
         results = {}
-        base_path = f"Archive/Season_{season}/Week_{week}"
+        base_path = ARCHIVE_DIR / f"Season_{season}" / f"Week_{week}"
         
         # 디렉토리 존재 확인
-        if not os.path.exists(base_path):
+        if not base_path.exists():
             logging.warning(f"디렉토리가 존재하지 않습니다: {base_path}")
             return results
         
@@ -63,7 +71,7 @@ class SubmissionChecker:
             required = participant['required_problems']
             
             # 현재 주차 파일 패턴 매칭
-            pattern = f"{base_path}/{prefix}_problem_*.sql"
+            pattern = str(base_path / f"{prefix}_problem_*.sql")
             files = glob.glob(pattern)
             
             # 제출 현황 판단
@@ -72,8 +80,8 @@ class SubmissionChecker:
                 logging.info(f"{name}: 제출 완료 ({len(files)}/{required})")
             else:
                 # 이번 주에 제출하지 않은 경우, 차주 제출 현황 확인
-                next_week_path = f"Archive/Season_{season}/Week_{week+1}"
-                next_pattern = f"{next_week_path}/{prefix}_problem_*.sql"
+                next_week_path = ARCHIVE_DIR / f"Season_{season}" / f"Week_{week+1}"
+                next_pattern = str(next_week_path / f"{prefix}_problem_*.sql")
                 next_files = glob.glob(next_pattern)
                 
                 if len(next_files) >= required:
@@ -102,10 +110,10 @@ class SubmissionChecker:
         logging.info(f"Season {season} Week {week-1} 이전 주차 제출 현황 확인 시작")
         
         results = {}
-        prev_path = f"Archive/Season_{season}/Week_{week-1}"
+        prev_path = ARCHIVE_DIR / f"Season_{season}" / f"Week_{week-1}"
         
         # 디렉토리 존재 확인
-        if not os.path.exists(prev_path):
+        if not prev_path.exists():
             logging.warning(f"이전 주차 디렉토리가 존재하지 않습니다: {prev_path}")
             return results
         
@@ -119,12 +127,12 @@ class SubmissionChecker:
             required = participant['required_problems']
             
             # 이전 주차 파일 패턴 매칭
-            pattern = f"{prev_path}/{prefix}_problem_*.sql"
+            pattern = str(prev_path / f"{prefix}_problem_*.sql")
             files = glob.glob(pattern)
             
             # 이번 주차 파일 패턴 매칭 (지각 제출 확인용)
-            current_path = f"Archive/Season_{season}/Week_{week}"
-            current_pattern = f"{current_path}/{prefix}_problem_*.sql"
+            current_path = ARCHIVE_DIR / f"Season_{season}" / f"Week_{week}"
+            current_pattern = str(current_path / f"{prefix}_problem_*.sql")
             current_files = glob.glob(current_pattern)
             
             # 이전 주차 제출 현황 판단
@@ -160,7 +168,7 @@ class SubmissionChecker:
         all_results = {}
         
         # 시즌 설정 로드
-        with open("config/seasons.json", 'r', encoding='utf-8') as f:
+        with open(CONFIG_SEASONS, 'r', encoding='utf-8') as f:
             seasons_config = json.load(f)
         
         if str(season) not in seasons_config['seasons']:
@@ -186,8 +194,8 @@ def main():
         results = checker.check_submissions(current_season, current_week)
         
         # 결과를 JSON 파일로 저장 (다른 스크립트에서 사용)
-        output_file = f"results/season_{current_season}_week_{current_week}_results.json"
-        os.makedirs("results", exist_ok=True)
+        output_file = RESULTS_DIR / f"season_{current_season}_week_{current_week}_results.json"
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
         
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump({

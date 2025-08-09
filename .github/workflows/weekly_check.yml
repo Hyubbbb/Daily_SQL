@@ -61,4 +61,5 @@ jobs:
         echo "- ✅ Submission status checked" >> $GITHUB_STEP_SUMMARY
         echo "- ✅ README updated" >> $GITHUB_STEP_SUMMARY
         echo "- ✅ Discord notification sent" >> $GITHUB_STEP_SUMMARY
-        echo "- 📅 Week auto-increment: Enabled" >> $GITHUB_STEP_SUMMARY 
+        echo "- 📅 Week auto-increment: Enabled" >> $GITHUB_STEP_SUMMARY
+

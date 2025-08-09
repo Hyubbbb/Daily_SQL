@@ -10,12 +10,19 @@ import logging
 import requests
 from datetime import datetime
 from typing import Dict, Any
+from pathlib import Path
 
 # 로깅 설정
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
+SCRIPT_DIR = Path(__file__).resolve().parent           # Agent/scripts
+AGENT_DIR = SCRIPT_DIR.parent                          # Agent
+REPO_ROOT = AGENT_DIR.parent                           # repo root
+CONFIG_PARTICIPANTS = AGENT_DIR / "config" / "participants.json"
+RESULTS_DIR = AGENT_DIR / "results"
 
 class DiscordNotifier:
     def __init__(self, webhook_url: str = None):
@@ -26,7 +33,7 @@ class DiscordNotifier:
     
     def load_results(self, season: int, week: int) -> Dict[str, Any]:
         """결과 파일 로드"""
-        results_file = f"results/season_{season}_week_{week}_results.json"
+        results_file = RESULTS_DIR / f"season_{season}_week_{week}_results.json"
         try:
             with open(results_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
@@ -42,7 +49,7 @@ class DiscordNotifier:
         
         try:
             # 참여자 목록 로드 (활성 참가자만)
-            with open("../config/participants.json", 'r', encoding='utf-8') as f:
+            with open(CONFIG_PARTICIPANTS, 'r', encoding='utf-8') as f:
                 config = json.load(f)
             participants = [p['name'] for p in config['participants'] if p.get('active', True)]
             
