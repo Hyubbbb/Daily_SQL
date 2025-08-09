@@ -113,12 +113,30 @@ def main():
             logging.info("이전 주차 제출 현황 확인 시작")
             previous_results = checker.check_previous_week_submissions(current_season, current_week)
             logging.info(f"이전 주차 제출 현황 확인 완료: {len(previous_results)}명")
+            # 이전 주차 결과 저장 (지각/미제출 확정 반영)
+            try:
+                prev_output_file = RESULTS_DIR / f"season_{current_season}_week_{current_week-1}_results.json"
+                RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+                with open(prev_output_file, 'w', encoding='utf-8') as f:
+                    json.dump({
+                        'season': current_season,
+                        'week': current_week - 1,
+                        'check_time': datetime.now().isoformat(),
+                        'results': previous_results
+                    }, f, ensure_ascii=False, indent=2)
+                logging.info(f"이전 주차 결과 저장 완료: {prev_output_file}")
+            except Exception as e:
+                logging.warning(f"이전 주차 결과 저장 실패: {e}")
         else:
             previous_results = {}
         
-        # 4. README 업데이트 (현재 주차)
+        # 4. README 업데이트 (이전 주차 → 현재 주차 순서)
         logging.info("2단계: README 업데이트 시작")
         updater = ReadmeUpdater()
+        prev_update_success = True
+        if current_week > 1 and previous_results:
+            logging.info("README 이전 주차 상태 업데이트")
+            prev_update_success = updater.update_status_table(current_season, current_week - 1, previous_results)
         readme_success = updater.update_status_table(current_season, current_week, current_results)
         
         if readme_success:
@@ -151,7 +169,8 @@ def main():
         print(f"   ✅ 완료: {len(completed)}명 ({', '.join(completed) if completed else '없음'})")
         print(f"   ⏰ 지각: {len(late)}명 ({', '.join(late) if late else '없음'})")
         print(f"   ❌ 미제출: {len(missing)}명 ({', '.join(missing) if missing else '없음'})")
-        print(f"📝 README 업데이트: {'성공' if readme_success else '실패'}")
+        print(f"📝 README 업데이트(이전 주차): {'성공' if prev_update_success else '스킵/실패'}")
+        print(f"📝 README 업데이트(현재 주차): {'성공' if readme_success else '실패'}")
         print(f"📢 디스코드 알림: {'성공' if discord_success else '실패'}")
         
         logging.info("=== SQL 스터디 자동화 완료 ===")
