@@ -51,7 +51,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add README.md Agent/config/participants.json
         if compgen -G "Agent/results/*.json" > /dev/null; then
-          git add Agent/results/*.json
+          git add -f Agent/results/*.json
         fi
         git commit -m "[📊 제출 현황 업데이트] 시즌 ${{ steps.week-info.outputs.season }} - Week ${{ steps.week-info.outputs.week }} [skip ci]" || exit 0
         git push
