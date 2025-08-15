@@ -10,6 +10,7 @@ import logging
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+import pytz
 
 # 스크립트 디렉토리를 Python 경로에 추가
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -26,35 +27,103 @@ CONFIG_PARTICIPANTS = AGENT_DIR / "config" / "participants.json"
 RESULTS_DIR = AGENT_DIR / "results"
 
 def should_increment_week() -> bool:
-    """금요일 자정 후인지 확인하여 주차 증가 여부 결정"""
-    now = datetime.now()
+    """금요일 자정 후인지 확인하여 주차 증가 여부 결정
     
-    # 금요일인지 확인 (월요일=0, 금요일=4)
-    if now.weekday() != 4:  # 금요일이 아니면 False
-        return False
+    GitHub Actions는 UTC 시간으로 실행되므로 한국 시간대를 고려해야 함
+    - cron '0 15 * * 5' = 한국 시간 토요일 00:00 (금요일 자정)
     
-    # 자정 이후인지 확인 (00:00 ~ 06:00 사이)
-    if now.hour < 6:  # 자정 후 6시간 이내
-        return True
+    허용되는 시간대:
+    1. 금요일 12:00 ~ 23:59 (금요일 오후~밤)
+    2. 토요일 00:00 ~ 06:00 (금요일 자정 직후, GitHub Actions 실행 시점)
+    
+    추가 보호 장치:
+    - 중복 실행 방지: 이미 이번 주차가 증가했는지 확인
+    """
+    # 한국 시간대로 현재 시간 가져오기
+    kst = pytz.timezone('Asia/Seoul')
+    now_kst = datetime.now(kst)
+    
+    # 금요일 오후~밤 (12:00 ~ 23:59)
+    if now_kst.weekday() == 4 and now_kst.hour >= 12:  # 금요일 오후
+        return not _already_incremented_today()
+    
+    # 토요일 새벽 (00:00 ~ 06:00) - 금요일 자정 직후
+    elif now_kst.weekday() == 5 and now_kst.hour <= 6:  # 토요일 새벽
+        return not _already_incremented_today()
     
     return False
 
+def _already_incremented_today() -> bool:
+    """오늘 이미 주차가 증가했는지 확인"""
+    try:
+        # 오늘 날짜의 결과 파일이 있는지 확인
+        with open(CONFIG_PARTICIPANTS, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        
+        current_season = config['current_season']
+        current_week = config['current_week']
+        
+        # 현재 주차 결과 파일이 오늘 생성되었는지 확인
+        result_file = RESULTS_DIR / f"season_{current_season}_week_{current_week}_results.json"
+        if result_file.exists():
+            # 파일 수정 시간이 오늘인지 확인
+            file_mtime = datetime.fromtimestamp(result_file.stat().st_mtime)
+            today = datetime.now().date()
+            if file_mtime.date() == today:
+                logging.info("오늘 이미 주차가 증가했습니다. 중복 실행을 방지합니다.")
+                return True
+        
+        return False
+    except Exception as e:
+        logging.warning(f"중복 실행 확인 중 오류: {e}. 안전하게 진행합니다.")
+        return False
+
 def update_week_in_config(config_path: Path, current_week: int) -> bool:
-    """설정 파일에서 current_week를 증가시키고 저장"""
+    """설정 파일에서 current_week를 증가시키고 저장
+    
+    시즌 종료 시 다음 시즌으로 자동 전환 로직 포함
+    """
     try:
         # 설정 파일 읽기
         with open(config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
         
-        # 주차 증가
-        new_week = current_week + 1
-        config['current_week'] = new_week
+        current_season = config['current_season']
+        
+        # 시즌 설정 로드하여 총 주차 수 확인
+        seasons_config_path = AGENT_DIR / "config" / "seasons.json"
+        try:
+            with open(seasons_config_path, 'r', encoding='utf-8') as f:
+                seasons_config = json.load(f)
+            total_weeks = seasons_config['seasons'][str(current_season)]['weeks']
+        except Exception as e:
+            logging.warning(f"시즌 설정 로드 실패: {e}. 기본값 9주로 설정")
+            total_weeks = 9
+        
+        # 시즌 종료 확인
+        if current_week >= total_weeks:
+            # 다음 시즌으로 전환
+            next_season = current_season + 1
+            
+            # 다음 시즌 설정이 있는지 확인
+            if str(next_season) in seasons_config.get('seasons', {}):
+                config['current_season'] = next_season
+                config['current_week'] = 1
+                logging.info(f"시즌 종료! 시즌 {current_season} → 시즌 {next_season}, 주차: 1")
+            else:
+                # 다음 시즌 설정이 없으면 현재 시즌 유지
+                logging.warning(f"시즌 {next_season} 설정이 없습니다. 현재 시즌 {current_season} 유지")
+                return False
+        else:
+            # 일반적인 주차 증가
+            new_week = current_week + 1
+            config['current_week'] = new_week
+            logging.info(f"주차 자동 증가: {current_week} → {new_week}")
         
         # 설정 파일 저장
         with open(config_path, 'w', encoding='utf-8') as f:
             json.dump(config, f, ensure_ascii=False, indent=2)
         
-        logging.info(f"주차 자동 증가: {current_week} → {new_week}")
         return True
         
     except Exception as e:

@@ -3,7 +3,7 @@ name: Weekly SQL Submission Check
 on:
   schedule:
     # 한국 시간 금요일 자정
-    - cron: '0 15 * * 4'
+    - cron: '0 15 * * 5'
   workflow_dispatch: # 수동 실행 가능
   push:
     branches: [ main ]
