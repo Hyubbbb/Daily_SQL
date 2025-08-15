@@ -1,7 +1,7 @@
 {
   "season": 7,
   "week": 6,
-  "check_time": "2025-08-14T15:11:56.162636",
+  "check_time": "2025-08-15T09:01:06.593540",
   "results": {
     "김협": {
       "status": "✅",
@@ -45,10 +45,13 @@
       "file_prefix": "chaewon"
     },
     "이형주": {
-      "status": "-",
-      "submitted": 0,
+      "status": "✅",
+      "submitted": 2,
       "required": 2,
-      "files": [],
+      "files": [
+        "/home/runner/work/Daily_SQL/Daily_SQL/Archive/Season_7/Week_6/hj_problem_2.sql",
+        "/home/runner/work/Daily_SQL/Daily_SQL/Archive/Season_7/Week_6/hj_problem_1.sql"
+      ],
       "file_prefix": "hj"
     }
   }
