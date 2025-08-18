@@ -8,9 +8,9 @@ import os
 import sys
 import logging
 import json
+import pytz
 from datetime import datetime, timedelta
 from pathlib import Path
-import pytz
 
 # 스크립트 디렉토리를 Python 경로에 추가
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -54,22 +54,20 @@ def should_increment_week() -> bool:
     return False
 
 def _already_incremented_today() -> bool:
-    """오늘 이미 주차가 증가했는지 확인"""
+    """오늘 이미 주차가 증가했는지 확인
+    
+    간단하게 현재 시간과 마지막 실행 시간을 비교
+    """
     try:
-        # 오늘 날짜의 결과 파일이 있는지 확인
-        with open(CONFIG_PARTICIPANTS, 'r', encoding='utf-8') as f:
-            config = json.load(f)
+        # 임시 파일로 마지막 실행 시간 기록
+        last_run_file = AGENT_DIR / ".last_week_increment"
         
-        current_season = config['current_season']
-        current_week = config['current_week']
-        
-        # 현재 주차 결과 파일이 오늘 생성되었는지 확인
-        result_file = RESULTS_DIR / f"season_{current_season}_week_{current_week}_results.json"
-        if result_file.exists():
-            # 파일 수정 시간이 오늘인지 확인
-            file_mtime = datetime.fromtimestamp(result_file.stat().st_mtime)
-            today = datetime.now().date()
-            if file_mtime.date() == today:
+        if last_run_file.exists():
+            with open(last_run_file, 'r') as f:
+                last_run_date = f.read().strip()
+            
+            today = datetime.now().date().strftime('%Y-%m-%d')
+            if last_run_date == today:
                 logging.info("오늘 이미 주차가 증가했습니다. 중복 실행을 방지합니다.")
                 return True
         
@@ -123,6 +121,11 @@ def update_week_in_config(config_path: Path, current_week: int) -> bool:
         # 설정 파일 저장
         with open(config_path, 'w', encoding='utf-8') as f:
             json.dump(config, f, ensure_ascii=False, indent=2)
+        
+        # 실행 시간 기록 (중복 실행 방지용)
+        last_run_file = AGENT_DIR / ".last_week_increment"
+        with open(last_run_file, 'w') as f:
+            f.write(datetime.now().date().strftime('%Y-%m-%d'))
         
         return True
         
