@@ -5,6 +5,7 @@ on:
     # 한국 시간 금요일 자정
     - cron: '0 15 * * 5'
   workflow_dispatch: # 수동 실행 가능
+  # push 트리거 비활성화 (수정 중에는 주석 처리)
   push:
     branches: [ main ]
     paths:
