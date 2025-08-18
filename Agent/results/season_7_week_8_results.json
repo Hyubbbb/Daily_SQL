@@ -1,0 +1,45 @@
+{
+  "season": 7,
+  "week": 8,
+  "check_time": "2025-08-18T11:30:47.908542",
+  "results": {
+    "김협": {
+      "status": "-",
+      "submitted": 0,
+      "required": 2,
+      "files": [],
+      "file_prefix": "hyub"
+    },
+    "송태원": {
+      "status": "-",
+      "submitted": 0,
+      "required": 2,
+      "files": [],
+      "file_prefix": "tw"
+    },
+    "이지윤": {
+      "status": "✅",
+      "submitted": 2,
+      "required": 2,
+      "files": [
+        "/home/runner/work/Daily_SQL/Daily_SQL/Archive/Season_7/Week_8/jiyun_problem_1.sql",
+        "/home/runner/work/Daily_SQL/Daily_SQL/Archive/Season_7/Week_8/jiyun_problem_2.sql"
+      ],
+      "file_prefix": "jiyun"
+    },
+    "송채원": {
+      "status": "-",
+      "submitted": 0,
+      "required": 3,
+      "files": [],
+      "file_prefix": "chaewon"
+    },
+    "이형주": {
+      "status": "-",
+      "submitted": 0,
+      "required": 2,
+      "files": [],
+      "file_prefix": "hj"
+    }
+  }
+}
