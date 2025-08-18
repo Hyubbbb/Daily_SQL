@@ -27,16 +27,8 @@ CONFIG_PARTICIPANTS = AGENT_DIR / "config" / "participants.json"
 RESULTS_DIR = AGENT_DIR / "results"
 
 def should_increment_week() -> bool:
-    """주차 자동 증가 여부 결정 - 간단한 버전"""
-    # 금요일이면 주차 증가 (복잡한 시간 조건 제거)
-    kst = pytz.timezone('Asia/Seoul')
-    now_kst = datetime.now(kst)
-    
-    # 금요일(4)이면 주차 증가
-    if now_kst.weekday() == 4:
-        return True
-    
-    return True # 그냥 더 간단하게 해버려
+    """GitHub Actions 실행 시 항상 주차 증가"""
+    return True
 
 def update_week_in_config(config_path: Path, current_week: int) -> bool:
     """설정 파일에서 current_week를 증가시키고 저장 - 간단한 버전"""
