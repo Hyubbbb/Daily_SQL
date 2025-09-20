@@ -1,0 +1,17 @@
+WITH RANK_TBL AS (
+  SELECT
+    ID,
+    PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS "isze_rank"
+  FROM ECOLI_DATA
+)
+
+SELECT 
+    ID,
+    CASE 
+    WHEN size_rank <= 0.25 THEN "CRITICAL"
+    WHEN size_rank <= 0.50 THEN "HIGH"
+    WHEN size_rank <= 0.75 THEN "MEDIUM"
+    ELSE "LOW"
+    END "COLONY_NAME"
+FROM RANK_TBL
+ORDER BY 1
