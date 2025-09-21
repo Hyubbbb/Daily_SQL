@@ -1,18 +1,18 @@
-WITH T1 AS (
+WITH t1 AS (
     SELECT 
-        ID,
-        SIZE_OF_COLONY,
-        PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS SIZE_PERCENT
-    FROM ECOLI_DATA
+        id,
+        size_of_colony,
+        PERCENT_RANK() OVER (ORDER BY size_of_colony DESC) AS size_percent
+    FROM ecoli_data
 )
 
 SELECT
-    ID,
+    id,
     CASE
-        WHEN SIZE_PERCENT BETWEEN 0 AND 0.25 THEN 'CRITICAL'
-        WHEN SIZE_PERCENT > 0.25 AND SIZE_PERCENT <= 0.50 THEN 'HIGH'
-        WHEN SIZE_PERCENT > 0.50 AND SIZE_PERCENT <= 0.75 THEN 'MEDIUM'
+        WHEN size_percent BETWEEN 0 AND 0.25 THEN 'CRITICAL'
+        WHEN size_percent > 0.25 AND SIZE_PERCENT <= 0.50 THEN 'HIGH'
+        WHEN size_percent > 0.50 AND SIZE_PERCENT <= 0.75 THEN 'MEDIUM'
         ELSE 'LOW'
-    END AS COLONY_NAME
-FROM T1
-ORDER BY ID
+    END AS colony_name
+FROM t1
+ORDER BY id
