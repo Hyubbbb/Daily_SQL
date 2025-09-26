@@ -7,14 +7,14 @@ WITH review_avg AS (
 )
 
 SELECT 
-    R1.rest_id,
-    R1.rest_name,
-    R1.food_type,
-    R1.favorites,
-    R1.address,
-    R2.score
-FROM rest_info R1
-    JOIN review_avg R2
-        ON R1.rest_id = R2.rest_id
+    r1.rest_id,
+    r1.rest_name,
+    r1.food_type,
+    r1.favorites,
+    r1.address,
+    r2.score
+FROM rest_info r1
+    JOIN review_avg r2
+        ON r1.rest_id = r2.rest_id
 WHERE address LIKE '서울%'
-ORDER BY R2.score DESC, R1.favorites DESC
+ORDER BY r2.score DESC, r1.favorites DESC
