@@ -1,4 +1,3 @@
--- 대장균의 크기에 따라 분류하기 2 (박정민)
 SELECT
     id,
     CASE NTILE(4) OVER (ORDER BY size_of_colony DESC)
