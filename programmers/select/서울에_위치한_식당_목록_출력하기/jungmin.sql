@@ -10,8 +10,7 @@ FROM rest_info as r1
         ON r1.rest_id = r2.rest_id
 WHERE 1=1
     AND r1.address LIKE '서울%'
-GROUP BY
-    r1.rest_id
+GROUP BY r1.rest_id
 ORDER BY
     score DESC,
     r1.favorites DESC
