@@ -7,7 +7,5 @@ SELECT
         WHEN 3 THEN 'MEDIUM'
         WHEN 4 THEN 'LOW'
     END AS colony_name
-FROM
-    ecoli_data
-ORDER BY
-    id;
+FROM ecoli_data
+ORDER BY id;
