@@ -1,20 +1,18 @@
 WITH e AS (
     SELECT
         id,
-        PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) pr
+        PERCENT_RANK() OVER (ORDER BY size_of_colony DESC) AS size_p
     FROM
-        ECOLI_DATA
+        ecoli_data
 )
 
 SELECT
     id,
     CASE
-        WHEN pr <= 0.25 THEN 'CRITICAL'
-        WHEN pr <= 0.50 THEN 'HIGH'
-        WHEN pr <= 0.75 THEN 'MEDIUM'
+        WHEN size_p <= 0.25 THEN 'CRITICAL'
+        WHEN size_p <= 0.50 THEN 'HIGH'
+        WHEN size_p <= 0.75 THEN 'MEDIUM'
         ELSE 'LOW'
-    END colony_name
-FROM
-    e
-ORDER BY
-    1;
+    END AS colony_name
+FROM e
+ORDER BY 1;
