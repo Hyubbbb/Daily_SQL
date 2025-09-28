@@ -1,4 +1,4 @@
-SElECT
+SELECT
     id,
     CASE 
         WHEN PERCENT_RANK() OVER(ORDER BY size_of_colony DESC) <= 0.25 THEN 'CRITICAL'
