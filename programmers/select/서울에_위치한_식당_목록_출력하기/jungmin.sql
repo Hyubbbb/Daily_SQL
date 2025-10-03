@@ -4,9 +4,9 @@ SELECT
     r1.food_type,
     r1.favorites,
     r1.address, 
-    ROUND(AVG(r2.review_score), 2) as score
-FROM rest_info as r1
-    JOIN rest_review as r2
+    ROUND(AVG(r2.review_score), 2) AS score
+FROM rest_info AS r1
+    JOIN rest_review AS r2
         ON r1.rest_id = r2.rest_id
 WHERE 1=1
     AND r1.address LIKE '서울%'
