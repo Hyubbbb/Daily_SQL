@@ -15,5 +15,4 @@ SELECT
 FROM offline_sale
 WHERE 1=1
     AND DATE_FORMAT(sales_date, '%Y-%m') = '2022-03'
-ORDER BY 1, 2, 3
- 
+ORDER BY 1, 2, 3;
