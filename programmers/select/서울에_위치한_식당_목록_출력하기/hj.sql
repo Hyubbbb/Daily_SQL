@@ -8,6 +8,8 @@ SELECT
 FROM rest_info AS r1
     INNER JOIN rest_review AS r2 
         ON r1.rest_id = r2.rest_id
-WHERE r1.address LIKE '서울%'
+WHERE 
+    1=1 AND
+    r1.address LIKE '서울%'
 GROUP BY r1.rest_id
 ORDER BY score DESC, r1.favorites DESC;
