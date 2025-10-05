@@ -1,6 +1,7 @@
 SELECT
     id,
-    CASE NTILE(4) OVER (ORDER BY size_of_colony DESC)
+    PERCENT_RANK() OVER (ORDER BY size_of_colony DESC) AS pr
+  FROM ecoli_data
         WHEN 1 THEN 'CRITICAL'
         WHEN 2 THEN 'HIGH'
         WHEN 3 THEN 'MEDIUM'
