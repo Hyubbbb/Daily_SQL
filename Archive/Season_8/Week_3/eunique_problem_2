@@ -1,0 +1,4 @@
+# Programmers: MAX : 최댓값 구하기
+# 가장 최근에 들어온 시간 = 최댓값 
+SELECT MAX(DATETIME) AS 최근_입소_시간
+FROM ANIMAL_INS;
