@@ -1,4 +1,4 @@
--- programmers / IS NULL : Root 아이템 구하기 (Level 2)
+--- programmers / IS NULL : Root 아이템 구하기 (Level 2)
 SELECT
     info.item_id,
     info.item_name
