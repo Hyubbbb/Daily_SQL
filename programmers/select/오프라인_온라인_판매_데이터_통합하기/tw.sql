@@ -8,7 +8,7 @@ WHERE 1=1
     AND DATE_FORMAT(sales_date, '%Y-%m') = '2022-03'
 UNION ALL
 SELECT
-    DATE_FORMAT(sales_date, '%Y-%m-%d') AS 'sales_date',
+    DATE_FORMAT(sales_date, '%Y-%m-%d') AS `sales_date`,
     product_id,
     NULL,
     sales_amount
