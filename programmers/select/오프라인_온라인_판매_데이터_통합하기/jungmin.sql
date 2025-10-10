@@ -1,12 +1,13 @@
---  programmers / SELECT 오프라인/온라인 판매 데이터 통합하기 (박정민)
-WITH a AS (
+-- 오프라인/온라인 판매 데이터 통합하기 (박정민)
+WITH union_onoff AS (
     SELECT
         sales_date,
         product_id,
         user_id,
         sales_amount
     FROM online_sale
-    WHERE MONTH(sales_date) = 3
+    WHERE 1=1
+        AND MONTH(sales_date) = 3
     
     UNION ALL
     
@@ -16,7 +17,8 @@ WITH a AS (
         NULL AS user_id,
         sales_amount
     FROM offline_sale
-    WHERE MONTH(sales_date) = 3
+    WHERE 1=1
+        AND MONTH(sales_date) = 3
 ) 
 
 SELECT
@@ -24,7 +26,7 @@ SELECT
     product_id,
     user_id,
     sales_amount
-FROM a
+FROM union_onoff
 ORDER BY
     sales_date ASC,
     product_id ASC,
