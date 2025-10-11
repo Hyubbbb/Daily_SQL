@@ -5,7 +5,8 @@ SELECT
     user_id,
     sales_amount
 FROM online_sale
-WHERE sales_date LIKE '2022-03%'
+WHERE 1=1 
+    AND sales_date LIKE '2022-03%'
 
 UNION ALL
 
@@ -15,5 +16,6 @@ SELECT
     NULL AS user_id,
     sales_amount
 FROM offline_sale
-WHERE sales_date LIKE '2022-03%'
+WHERE 1=1 
+    AND sales_date LIKE '2022-03%'
 ORDER BY sales_date ASC, product_id ASC, user_id ASC;
