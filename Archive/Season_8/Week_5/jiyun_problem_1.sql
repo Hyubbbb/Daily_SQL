@@ -1,5 +1,5 @@
 -- NULLIF(expression1, expression2)
--- 동작 원리
+  -- 동작 원리
   -- expression1 = expression2 → NULL 반환
   --expression1 ≠ expression2 → expression1 반환
 SELECT
