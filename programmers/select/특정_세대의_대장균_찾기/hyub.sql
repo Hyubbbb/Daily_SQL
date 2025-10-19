@@ -5,7 +5,8 @@ WITH RECURSIVE cte_gen AS (
         ed1.parent_id,
         1 AS gen
     FROM ecoli_data AS ed1
-    WHERE parent_id IS NULL
+    WHERE 1=1 
+        AND parent_id IS NULL
 
     UNION ALL
     
