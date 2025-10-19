@@ -1,0 +1,13 @@
+SELECT
+    b.book_id,
+    DATE_FORMAT(b.published_date, '%Y-%m-%d') AS published_date
+    # DATE_FORMAT()을 통해 날짜 형식 맞추기 굉장히 중요 
+FROM 
+    book AS b 
+WHERE 1=1
+    AND b.category = '인문'
+    # AND b.published_date >= '2021-01-01'
+    # AND b.published_date <  '2022-01-01'
+    AND YEAR(b.published_date) = 2021
+ORDER BY 
+    b.published_date; 
