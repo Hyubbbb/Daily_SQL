@@ -20,4 +20,4 @@ FROM ecoli_data AS e
     JOIN second_gen AS sg
         ON e.parent_id = sg.id
 ORDER BY
-    e.ID ASC
+    e.id ASC
