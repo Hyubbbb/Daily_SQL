@@ -9,11 +9,11 @@ WITH RECURSIVE ecoli_gen AS (
     UNION ALL
 
     SELECT
-        ch.id,
-        pr.generation + 1 AS generation
-    FROM ecoli_data AS ch
-        JOIN ecoli_gen AS pr
-            ON ch.parent_id = pr.id
+        e1.id,
+        e2.generation + 1 AS generation
+    FROM ecoli_data AS e1
+        JOIN ecoli_gen AS e2
+            ON e1.parent_id = e2.id
 )
 
 SELECT
