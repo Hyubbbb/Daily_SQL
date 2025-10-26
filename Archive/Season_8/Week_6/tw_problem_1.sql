@@ -7,7 +7,6 @@ WITH base as (
         accepter_id as id
     FROM RequestAccepted
 )
-
 SELECT
     id,
     COUNT(*) AS num
