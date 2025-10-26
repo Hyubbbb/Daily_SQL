@@ -10,7 +10,7 @@ WITH RECURSIVE generation_table AS(
     
     SELECT
         e.id,
-        g.generation + 1 # 부모 세대 + 1
+        g.generation + 1 AS generation # 부모 세대 + 1
     FROM ecoli_data AS e
         JOIN generation_table AS g
             ON e.parent_id = g.id
