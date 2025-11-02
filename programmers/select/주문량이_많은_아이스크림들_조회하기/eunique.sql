@@ -8,4 +8,4 @@ FROM first_half AS f
     ) AS j
 ON f.flavor = j.flavor
 ORDER BY (f.total_order + j.july_total) DESC
-LIMIT 3;
+LIMIT 3; 
