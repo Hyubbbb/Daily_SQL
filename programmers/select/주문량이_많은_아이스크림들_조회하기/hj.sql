@@ -13,7 +13,6 @@ SELECT
 FROM july
 GROUP BY flavor
 )
-
 SELECT flavor
 FROM total
 GROUP BY flavor
