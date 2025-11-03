@@ -1,5 +1,5 @@
 SELECT
-   f.flavor
+   f.flavor 
 FROM first_half AS f
     JOIN (
         SELECT 
