@@ -1,18 +1,23 @@
+WITH total AS (
+    SELECT
+        flavor,
+        total_order
+    FROM
+        first_half
+
+    UNION ALL
+
+    SELECT
+        flavor,
+        total_order
+    FROM
+        july
+)
+
 SELECT
     flavor
-FROM (
-    SELECT
-        flavor,
-        total_order
-    FROM first_half
-    
-    UNION ALL
-    
-    SELECT
-        flavor,
-        total_order
-    FROM july
-) AS total
+FROM
+    total
 GROUP BY
     flavor
 ORDER BY
