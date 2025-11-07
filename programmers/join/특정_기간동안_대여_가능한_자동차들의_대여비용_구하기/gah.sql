@@ -21,7 +21,7 @@ car_30_discount AS (
         car_rental_company_discount_plan
     WHERE 1=1
         AND duration_type = '30일 이상'
-)
+) -- 30일 할인
 
 SELECT
     a.car_id,
