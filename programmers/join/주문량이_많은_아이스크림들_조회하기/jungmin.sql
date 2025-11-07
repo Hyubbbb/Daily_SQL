@@ -1,11 +1,15 @@
 -- 주문량이 많은 아이스크림들 조회하기 (박정민)
 WITH total_table AS (
-    SELECT *
+    SELECT
+        flavor,
+        total_order
     FROM first_half
     
     UNION ALL
     
-    SELECT *
+    SELECT
+        flavor,
+        total_order
     FROM july
 )
 
