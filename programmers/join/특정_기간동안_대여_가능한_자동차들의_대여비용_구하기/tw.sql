@@ -50,4 +50,4 @@ SELECT
     ROUND(fee, 0) AS 'fee'
 FROM condition3
 WHERE fee BETWEEN 500000 AND 2000000
-ORDER BY fee DESC, car_type ASC, car_id DESC
+ORDER BY fee DESC, car_type ASC, car_id DESC;
