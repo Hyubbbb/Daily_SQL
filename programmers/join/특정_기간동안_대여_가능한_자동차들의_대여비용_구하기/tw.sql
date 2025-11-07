@@ -7,7 +7,6 @@ WITH condition1 AS (
     WHERE 1=1
         AND car_type = "세단"
         OR car_type = "SUV"
-        
 ), condition2 AS (
     SELECT
         c1.car_id,
