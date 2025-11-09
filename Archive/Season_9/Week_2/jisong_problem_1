@@ -1,0 +1,19 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/131117
+
+SELECT
+    p.product_id      AS product_id,
+    p.product_name    AS product_name,
+    SUM(o.amount * p.price) AS total_sales
+FROM food_product AS p
+JOIN food_order AS o
+    ON o.product_id = p.product_id
+WHERE 1=1
+    -- 2022-05-01 이상, 2022-06-01 미만(말일 포함 안전한 범위)
+    AND o.produce_date >= DATE '2022-05-01'
+    AND o.produce_date <  DATE '2022-06-01'
+GROUP BY
+    p.product_id,
+    p.product_name
+ORDER BY
+    total_sales DESC,
+    p.product_id ASC;
