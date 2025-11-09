@@ -1,4 +1,4 @@
--- 주문량이 많은 아이스크림들 조회하기 (박정민)
+--- 주문량이 많은 아이스크림들 조회하기 (박정민)
 WITH total_table AS (
     SELECT
         flavor,
