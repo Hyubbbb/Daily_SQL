@@ -1,15 +1,20 @@
-WITH july_order AS (
-    SELECT 
-        *,
-        SUM(total_order) AS total_order_sum
+WITH total AS (
+    SELECT
+        flavor,
+        total_order
     FROM july
-    GROUP BY flavor
+    
+    UNION ALL
+    
+    SELECT
+        flavor,
+        total_order
+    FROM first_half
 )
-
+    
 SELECT 
-    f.flavor
-FROM first_half AS f
-    JOIN july_order AS j
-    ON f.shipment_id = j.shipment_id
-ORDER BY f.total_order + j.total_order_sum DESC
+    flavor
+FROM total
+GROUP BY flavor
+ORDER BY SUM(total_order) DESC
 LIMIT 3;
