@@ -3,9 +3,7 @@ WITH total AS (
         flavor, 
         SUM(total_order) AS total_order
     FROM first_half
-    
     UNION ALL
-    
     SELECT 
         flavor, 
         SUM(total_order) AS total_order
