@@ -1,17 +1,15 @@
 WITH total AS (
-SELECT 
-    flavor, 
-    SUM(total_order) AS total_order
-FROM first_half
-GROUP BY flavor
-
-UNION ALL
-
-SELECT 
-    flavor, 
-    SUM(total_order) AS total_order
-FROM july
-GROUP BY flavor
+    SELECT 
+        flavor, 
+        SUM(total_order) AS total_order
+    FROM first_half
+    
+    UNION ALL
+    
+    SELECT 
+        flavor, 
+        SUM(total_order) AS total_order
+    FROM july
 )
 SELECT flavor
 FROM total
