@@ -29,5 +29,5 @@ WHERE 1=1
     AND a.car_id IS NULL
     AND (c.daily_fee * 30 * (1- (d.discount_rate / 100))) >= 500000
     AND (c.daily_fee * 30 * (1- (d.discount_rate / 100))) < 2000000
-ORDER BY FEE DESC, car_id DESC;
+ORDER BY fee DESC, car_id DESC;
     
