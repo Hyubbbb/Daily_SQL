@@ -1,4 +1,4 @@
--- 특정 기간동안 대여 가능한 자동차들의 대여비용 구하기 (박정민)
+--- 특정 기간동안 대여 가능한 자동차들의 대여비용 구하기 (박정민)
 WITH already_rent AS(
     SELECT c1.car_id
     FROM car_rental_company_car AS c1
