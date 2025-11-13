@@ -1,5 +1,7 @@
 WITH available_cars AS (
-    SELECT c.car_id, c.car_type,
+    SELECT 
+        c.car_id, 
+        c.car_type,
         # 대여 가능 차량의 요금들을 미리 계산
         FLOOR(c.daily_fee *30 * (1 - dp.discount_rate / 100)) AS fee
     
@@ -21,7 +23,10 @@ WITH available_cars AS (
 )
 
 # with 구문에서 계산된 결과로 최종 금액 범위 구하기 
-SELECT ac.car_id, ac.car_type, ac.fee
+SELECT 
+    ac.car_id, 
+    ac.car_type, 
+    ac.fee
 FROM available_cars AS ac
 WHERE 1=1
     AND ac.fee >= 500000 # 50만원 이상일 경우
