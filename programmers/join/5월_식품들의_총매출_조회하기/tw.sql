@@ -1,4 +1,3 @@
-
 SELECT
     fp.product_id,
     fp.product_name,
@@ -8,5 +7,9 @@ FROM FOOD_ORDER AS fo
 WHERE 1=1
     AND YEAR(fo.produce_date) = 2022
     AND MONTH(fo.produce_date) = 05
-GROUP BY fp.product_id, fp.product_name
-ORDER BY totoal_sales DESC, fp.product_id ASC;
+GROUP BY
+    fp.product_id,
+    fp.product_name
+ORDER BY
+    totoal_sales DESC,
+    fp.product_id ASC;
