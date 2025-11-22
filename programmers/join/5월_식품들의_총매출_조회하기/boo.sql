@@ -1,7 +1,7 @@
 SELECT
     f1.product_id,
     f1.product_name,
-    SUM(price*amount) AS total_sales
+    SUM(f1.price * f2.amount) AS total_sales
 FROM food_product AS f1
     JOIN food_order AS f2
         ON f1.product_id = f2.product_id
