@@ -1,4 +1,4 @@
--- 5월 식품들의 총매출 조회하기 (박정민)
+--- 5월 식품들의 총매출 조회하기 (박정민)
 SELECT
     f1.product_id,
     f1.product_name,
