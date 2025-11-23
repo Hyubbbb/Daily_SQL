@@ -1,18 +1,21 @@
--- 그룹별 조건에 맞는 식당 목록 출력하기 (윤다빈)
+-- 그룹별 조건에 맞는 식당 목록 출력하기 (윤다빈) 
 SELECT
-    MP.MEMBER_NAME,
-    RR.REVIEW_TEXT,
-    DATE_FORMAT(RR.REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
-FROM MEMBER_PROFILE AS MP
-    JOIN REST_REVIEW AS RR
-        ON MP.MEMBER_ID = RR.MEMBER_ID
-WHERE RR.MEMBER_ID = (
-    SELECT MEMBER_ID
-    FROM REST_REVIEW
-    GROUP BY MEMBER_ID
-    ORDER BY COUNT(*) DESC, MEMBER_ID ASC 
-    LIMIT 1
-)
+    mp.member_name,
+    rr.review_text,
+    DATE_FORMAT(rr.review_date, '%Y-%m-%d') AS review_date
+FROM member_profile AS mp
+    JOIN rest_review AS rr
+        ON mp.member_id = rr.member_id
+WHERE 1 = 1
+  AND rr.member_id = (
+        SELECT
+            member_id
+        FROM rest_review
+        GROUP BY member_id
+        ORDER BY COUNT(*) DESC,
+                 member_id ASC 
+        LIMIT 1
+    )
 ORDER BY
-    RR.REVIEW_DATE ASC,   
-    RR.REVIEW_TEXT ASC;  
+    rr.review_date ASC,
+    rr.review_text ASC;
