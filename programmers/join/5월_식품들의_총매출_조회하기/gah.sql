@@ -1,15 +1,15 @@
 SELECT
-    p.product_id,
-    p.product_name,
+    f1.product_id,
+    f1.product_name,
     SUM(p.price * o.amount) AS total_sales
-FROM food_product AS p
-    JOIN food_order AS o
-        ON p.product_id = o.product_id
+FROM food_product AS f1
+    JOIN food_order AS f2
+        ON f1.product_id = f2.product_id
 WHERE 1=1
-    AND o.produce_date >= '2022-05-01'
-    AND o.produce_date <= '2022-05-31'
+    AND f2.produce_date >= '2022-05-01'
+    AND f2.produce_date <= '2022-05-31'
 GROUP BY
-    p.product_id
+    f1.product_id, f1.product_name
 ORDER BY
     total_sales DESC,
-    product_id ASC;
+    f1.product_id ASC;
