@@ -1,12 +1,12 @@
 SELECT
-    a1.animal_id,
-    a1.animal_type,
-    a1.name
-FROM animal_ins AS a1
-    JOIN animal_outs AS a2
-        ON a1.animal_id = a2.animal_id
+    ai.animal_id,
+    ai.animal_type,
+    ai.name
+FROM animal_ins AS ai
+    JOIN animal_outs AS ao
+        ON ai.animal_id = ao.animal_id
 WHERE 1=1
-    AND a1.sex_upon_intake LIKE "Intact%"
-    AND a2.sex_upon_outcome NOT LIKE "Intact%"
+    AND ai.sex_upon_intake LIKE "Intact%"
+    AND ao.sex_upon_outcome NOT LIKE "Intact%"
 ORDER BY
-    a1.animal_id ASC;
+    ai.animal_id ASC;
