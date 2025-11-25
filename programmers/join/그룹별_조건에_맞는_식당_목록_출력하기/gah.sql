@@ -17,14 +17,14 @@ max_reviewer AS (   -- 리뷰를 가장 많이 작성한 회원
 )
 
 SELECT
-    p.member_name,
-    r.review_text,
-    DATE_FORMAT(r.review_date, '%Y-%m-%d') AS review_date
-FROM max_reviewer AS m   -- (1) 제일 많이 작성한 리뷰어
-    JOIN rest_review AS r
-        ON m.member_id = r.member_id   -- (2) 위 리뷰어의 리뷰
-    JOIN member_profile AS p
-        ON m.member_id = p.member_id   -- (3) 위 리뷰어의 프로필
+    mp.member_name,
+    mr.review_text,
+    DATE_FORMAT(rr.review_date, '%Y-%m-%d') AS review_date
+FROM max_reviewer AS mr   -- (1) 제일 많이 작성한 리뷰어
+    JOIN rest_review AS rr
+        ON mr.member_id = rr.member_id   -- (2) 위 리뷰어의 리뷰
+    JOIN member_profile AS mp
+        ON mr.member_id = mp.member_id   -- (3) 위 리뷰어의 프로필
 ORDER BY
     review_date ASC,
-    r.review_text ASC;
+    rr.review_text ASC;
