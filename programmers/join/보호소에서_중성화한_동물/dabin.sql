@@ -1,3 +1,4 @@
+-- 보호소에서 중성화한 동물 (윤다빈)
 SELECT
     a.animal_id,
     a.animal_type,
