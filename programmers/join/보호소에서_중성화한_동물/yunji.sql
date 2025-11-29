@@ -8,3 +8,4 @@ FROM animal_outs AS o
 WHERE 1=1
     AND o.sex_upon_outcome NOT LIKE 'Intact%'
     AND i.sex_upon_intake LIKE 'Intact%'
+ORDER BY o.animal_id
