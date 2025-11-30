@@ -15,7 +15,8 @@ FROM rest_review AS r
         ON r.member_id = c.member_id
     JOIN member_profile AS m
         ON r.member_id = m.member_id
-WHERE c.rnk = 1
+WHERE 1=1
+    AND c.rnk = 1
 ORDER BY 
     3, 
     1;
