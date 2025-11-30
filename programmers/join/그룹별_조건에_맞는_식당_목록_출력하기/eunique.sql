@@ -15,14 +15,12 @@ max_reviewer AS (
 )
   
 SELECT 
-    m.member_name,
-    r.review_text,
-    DATE_FORMAT(r.review_date, '%Y-%m-%d') AS review_date
-FROM rest_review AS r
-    JOIN member_profile AS m
-        ON r.member_id = m.member_id
+    mp.member_name,
+    rr.review_text,
+    DATE_FORMAT(rr.review_date, '%Y-%m-%d') AS review_date
+FROM rest_review AS rr
+    JOIN member_profile AS mp
+        ON rr.member_id = mp.member_id
     JOIN max_reviewer mx
-        ON r.member_id = mx.member_id
-ORDER BY 
-    r.review_date ASC,
-    r.review_text ASC;
+        ON rr.member_id = mx.member_id
+ORDER BY r.review_date, r.review_text;
