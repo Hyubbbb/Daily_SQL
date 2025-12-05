@@ -9,4 +9,4 @@ WHERE 1=1
     AND ai.sex_upon_intake LIKE "Intact%"
     AND ao.sex_upon_outcome NOT LIKE "Intact%"
 ORDER BY
-    ai.animal_id ASC;
+    ai.animal_id;
