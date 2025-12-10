@@ -9,5 +9,4 @@ FROM animal_ins ai
 WHERE 1=1
     AND ai.sex_upon_intake LIKE 'Intact%'
     AND ao.sex_upon_outccome NOT LIKE 'Intact%'
-ORDER BY 
-    ai.animal_id ASC;
+ORDER BY ai.animal_id;
