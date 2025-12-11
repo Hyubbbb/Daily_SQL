@@ -3,6 +3,6 @@ SELECT
     ao.name
 FROM animal_outs AS ao
     LEFT JOIN animal_ins AS ai
-        ON ao.animal_id = ai.ANIMAL_ID
+        ON ao.animal_id = ai.animal_id
 WHERE 1=1
     AND ai.animal_id IS NULL -- animal_outs에는 있는데, animal_outs에는 없는 animal_id
