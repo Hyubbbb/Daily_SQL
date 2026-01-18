@@ -7,4 +7,4 @@ FROM book as b
         ON b.author_id = a.author_id
 WHERE 1=1
     AND b.category = '경제'
-ORDER BY B.PUBLISHED_DATE ASC;
+ORDER BY b.published_date;
