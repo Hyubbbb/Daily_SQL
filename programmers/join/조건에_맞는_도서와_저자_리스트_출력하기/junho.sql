@@ -5,5 +5,6 @@ SELECT
 FROM book AS b
     JOIN author AS a
         ON b.author_id = a.author_id
-WHERE b.category = '경제'
+WHERE 1=1
+    AND b.category = '경제'
 ORDER BY b.published_date
