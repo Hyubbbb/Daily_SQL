@@ -5,4 +5,4 @@ FROM animal_ins as ai
     ON ai.animal_id = ao.animal_id
 WHERE 1=1
   AND ai.datetime > ao.datetime
-ORDER BY ai.datetime
+ORDER BY ai.datetime;
