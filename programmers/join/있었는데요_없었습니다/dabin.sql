@@ -1,5 +1,5 @@
 -- 있었는데요 없었습니다 (윤다빈)
-SELECT 
+SELECT
     ai.animal_id,
     ai.name
 FROM animal_ins AS ai
