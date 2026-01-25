@@ -5,5 +5,6 @@ SELECT
 FROM animal_ins AS ai
     JOIN animal_outs AS ao
         ON ai.animal_id = ao.animal_id
-WHERE ao.datetime < ai.datetime
+WHERE 1=1 
+    AND ao.datetime < ai.datetime
 ORDER BY ai.datetime;
