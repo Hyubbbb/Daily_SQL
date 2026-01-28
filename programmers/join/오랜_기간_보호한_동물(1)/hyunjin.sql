@@ -1,4 +1,5 @@
-SELECT ai.name,
+SELECT 
+       ai.name,
        ai.datetime
   FROM animal_ins AS ai
     LEFT JOIN animal_outs AS ao
