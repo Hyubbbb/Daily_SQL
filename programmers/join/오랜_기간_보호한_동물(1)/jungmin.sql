@@ -6,4 +6,5 @@ FROM animal_ins AS ai
         ON ai.animal_id = ao.animal_id
 WHERE 1=1
     AND ao.animal_id IS NULL
-ORDER BY ai.datetime LIMIT 3
+ORDER BY ai.datetime
+LIMIT 3
