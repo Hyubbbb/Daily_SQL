@@ -3,8 +3,8 @@ WITH pr AS (
     SELECT 
        count(*) AS pr
     FROM user_info
-      WHERE 1=1 
-        AND YEAR(joined) = '2021'
+    WHERE 1=1 
+      AND YEAR(joined) = '2021'
 )
 
 SELECT
