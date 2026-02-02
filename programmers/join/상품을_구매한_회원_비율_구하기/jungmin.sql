@@ -17,4 +17,4 @@ FROM user_info AS ui
 WHERE 1=1
     AND ui.joined BETWEEN '2021-01-01' AND '2021-12-31'
 GROUP BY year, month
-ORDER BY year, month
+ORDER BY year, month;
