@@ -24,5 +24,5 @@ GROUP BY
     month, 
     t.total_users
 ORDER BY
-    year ASC, 
-    month ASC;
+    year, 
+    month;
