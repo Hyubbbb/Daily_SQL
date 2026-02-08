@@ -3,7 +3,7 @@ WITH join_2021 AS ( -- 2021에 가입한 회원
         user_id
     FROM user_info
     WHERE 1=1
-        AND joined LIKE '2021%'
+        AND joined BETWEEN '2021-01-01' AND '2021-12-31'
 )
 
 SELECT
