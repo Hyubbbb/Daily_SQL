@@ -4,6 +4,4 @@ SELECT
 FROM product AS p
     JOIN offline_sale AS os
         ON p.product_id = os.product_id
-ORDER BY 
-    sales DESC,
-    product_id;
+ORDER BY sales DESC, product_id;
