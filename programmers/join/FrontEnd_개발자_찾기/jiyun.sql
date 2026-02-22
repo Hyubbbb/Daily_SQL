@@ -10,7 +10,7 @@ SELECT
     d.last_name
 FROM skillcodes AS s
     JOIN developers AS d
-        ON (d.SKILL_CODE & s.CODE) > 0
+        ON (d.skill_code & s.code) > 0
 WHERE 1=1
     AND s.category = 'Front End'
 ORDER BY d.id
