@@ -7,5 +7,6 @@ SELECT
 FROM developers AS d
 JOIN skillcodes AS s
     ON d.skill_code & s.code != 0
-WHERE s.category = 'Front End'
+WHERE 1=1
+    AND s.category = 'Front End'
 ORDER BY d.id;
