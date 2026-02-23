@@ -9,8 +9,8 @@ WITH ranked AS (
             ORDER BY fi.length DESC
         ) AS rn
     FROM fish_info fi
-    JOIN fish_name_info fni
-        ON fi.fish_type = fni.fish_type
+        JOIN fish_name_info fni
+            ON fi.fish_type = fni.fish_type
 )
 
 SELECT
@@ -18,5 +18,6 @@ SELECT
     fish_name,
     length
 FROM ranked
-WHERE rn = 1
+WHERE 1=1
+    AND rn = 1
 ORDER BY id;
