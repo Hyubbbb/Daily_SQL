@@ -11,8 +11,8 @@ SELECT
   fi.length AS length
 FROM fish_info AS fi
   JOIN max_length AS ml
-    ON fi.fish_type = ml.fish_type
-    AND fi.length = ml.length
+      ON fi.fish_type = ml.fish_type
+AND fi.length = ml.length
   JOIN fish_name_info AS fni
     ON fi.fish_type = fni.fish_type
 ORDER BY fi.id;
