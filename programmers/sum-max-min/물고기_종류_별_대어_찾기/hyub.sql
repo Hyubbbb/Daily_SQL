@@ -3,7 +3,7 @@ WITH fish_ranking AS (
         id,
         fish_type,
         length,
-        RANK() OVER (PARTITION BY fish_type ORDER BY LENGTH DESC) AS ranking
+        RANK() OVER (PARTITION BY fish_type ORDER BY length DESC) AS ranking
     FROM fish_info
 )
 SELECT
