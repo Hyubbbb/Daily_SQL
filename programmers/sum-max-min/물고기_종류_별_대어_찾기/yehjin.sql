@@ -4,7 +4,8 @@ WITH rank_length AS(
         fish_type,
         length,
         ROW_NUMBER() OVER (PARTITION BY fish_type ORDER BY length DESC) AS rn
-    FROM fish_info)
+    FROM fish_info
+)
     
 SELECT
     rl.id,
@@ -15,4 +16,5 @@ FROM rank_length AS rl
         ON rl.fish_type = fni.fish_type
 WHERE 1=1
     AND rl.rn=1
+
 ORDER BY rl.id;
