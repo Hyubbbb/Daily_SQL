@@ -1,15 +1,16 @@
 # 취소되지_않은_진료_예약_조회하기
 SELECT     
-    A.APNT_NO,
-    P.PT_NAME, P.PT_NO,
-    D.MCDP_CD, D.DR_NAME,
-    A.APNT_YMD
-FROM APPOINTMENT AS A
-    LEFT JOIN PATIENT AS P 
-        ON A.PT_NO = P.PT_NO
-    LEFT JOIN DOCTOR AS D
-        ON A.MDDR_ID = D.DR_ID
-WHERE DATE(A.APNT_YMD) = '2022-04-13'
-    AND A.MCDP_CD = 'CS'
-    AND A.APNT_CNCL_YN = 'N'
-ORDER BY A.APNT_YMD
+    a.apnt_no,
+    p.pt_name, p.pt_no,
+    d.mcdp_cd, d.dr_name,
+    a.apnt_ymd
+FROM appointment AS a
+    LEFT JOIN patient AS p 
+        ON a.pt_no = p.pt_no
+    LEFT JOIN doctor AS d
+        ON a.mddr_id = d.dr_id
+WHERE 1=1
+    AND DATE(a.apnt_ymd) = '2022-04-13'
+    AND a.mcdp_cd = 'CS'
+    AND a.apnt_cncl_yn = 'N'
+ORDER BY a.apnt_ymd;
