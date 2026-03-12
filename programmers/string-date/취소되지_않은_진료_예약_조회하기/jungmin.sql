@@ -12,6 +12,6 @@ FROM appointment AS a
         ON a.mddr_id = d.dr_id
 WHERE 1=1
     AND a.apnt_YMD BETWEEN '2022-04-13' AND '2022-04-14'
-    AND a.apnt_cncl_yn = 'N'
-    AND a.mcdp_cd = 'CS'
+    AND a.apnt_cncl_yn = 'n'
+    AND a.mcdp_cd = 'cs'
 ORDER BY a.apnt_ymd;
