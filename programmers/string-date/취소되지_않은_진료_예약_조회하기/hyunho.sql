@@ -10,7 +10,8 @@ FROM appointment AS a
         ON a.pt_no = p.pt_no
     JOIN doctor AS d
         ON a.mddr_id = d.dr_id
-WHERE DATE(a.apnt_ymd) = '2022-04-13'
+WHERE 1=1
+    AND DATE(a.apnt_ymd) = '2022-04-13'
     AND a.apnt_cncl_yn = 'N'
     AND a.mcdp_cd = 'CS'
-ORDER BY a.apnt_ymd ASC;
+ORDER BY a.apnt_ymd;
