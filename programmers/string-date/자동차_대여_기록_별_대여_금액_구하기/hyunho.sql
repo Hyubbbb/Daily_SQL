@@ -1,7 +1,8 @@
 SELECT 
     rh.history_id,
     TRUNCATE(
-        (DATEDIFF(rh.end_date, rh.start_date) + 1) * c.daily_fee * (1 - IFNULL(dp.discount_rate, 0) / 100), 0) AS fee
+        (DATEDIFF(rh.end_date, rh.start_date) + 1) * c.daily_fee * (1 - IFNULL(dp.discount_rate, 0) / 100), 0
+    ) AS fee
 FROM car_rental_company_rental_history AS rh
     JOIN car_rental_company_car AS c
         ON rh.car_id = c.car_id
