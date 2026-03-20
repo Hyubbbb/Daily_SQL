@@ -20,6 +20,7 @@ SELECT
     ROUND(hd.duration * hd.daily_fee * (1-IFNULL(discount_rate, 0)/100)) AS fee
 FROM history_duration AS hd
     LEFT JOIN car_rental_company_discount_plan As crcdp
-        ON hd.car_type = crcdp.car_type AND hd.duration_type = crcdp.duration_type
+        ON hd.car_type = crcdp.car_type 
+            AND hd.duration_type = crcdp.duration_type
 WHERE hd.car_type = '트럭'
 ORDER BY fee DESC, hd.history_id DESC
