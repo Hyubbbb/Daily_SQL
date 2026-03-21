@@ -23,5 +23,5 @@ SELECT
 FROM truck AS t
     LEFT JOIN car_rental_company_discount_plan AS cdp
         ON t.car_type = cdp.car_type
-        AND t.duration_type = cdp.duration_type
+            AND t.duration_type = cdp.duration_type
 ORDER BY fee DESC, history_id DESC;
