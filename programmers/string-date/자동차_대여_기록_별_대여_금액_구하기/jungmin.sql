@@ -20,7 +20,8 @@ truck_discount AS(
         duration_type,
         discount_rate
     FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
-    WHERE car_type = '트럭'
+    WHERE 1=1
+        AND car_type = '트럭'
 )
 
 SELECT
