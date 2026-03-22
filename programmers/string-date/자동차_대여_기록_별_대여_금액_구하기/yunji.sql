@@ -32,5 +32,6 @@ FROM rental_period AS rp
     LEFT JOIN discount_ratio AS dr
         ON rp.car_type = dr.car_type
             AND rp.duration_type = dr.duration_type
-WHERE rp.car_type = '트럭'
+WHERE 1=1
+    AND rp.car_type = '트럭'
 ORDER BY fee DESC, history_id DESC;
