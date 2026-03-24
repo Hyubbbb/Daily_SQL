@@ -12,7 +12,7 @@ WITH truck AS (
         END AS duration_type
     FROM car_rental_company_rental_history AS crh
         JOIN car_rental_company_car AS cc
-        ON crh.car_id = cc.car_id
+            ON crh.car_id = cc.car_id
     WHERE 1=1
         AND cc.car_type = '트럭'
 )
