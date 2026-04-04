@@ -1,5 +1,3 @@
-# --https://school.programmers.co.kr/learn/courses/30/lessons/131116
-
 WITH max_price AS (
     SELECT 
         category,
