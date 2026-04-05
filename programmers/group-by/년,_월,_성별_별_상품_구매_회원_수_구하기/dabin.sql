@@ -6,12 +6,13 @@ SELECT
 FROM user_info AS ui
     INNER JOIN online_sale AS os
         ON ui.user_id = os.user_id
-WHERE ui.gender IS NOT NULL
+WHERE 1=1
+    AND ui.gender IS NOT NULL
 GROUP BY
     YEAR(os.sales_date),
     MONTH(os.sales_date),
     ui.gender
 ORDER BY
-    year,
-    month,
+    YEAR(os.sales_date),
+    MONTH(os.sales_date),
     ui.gender;
