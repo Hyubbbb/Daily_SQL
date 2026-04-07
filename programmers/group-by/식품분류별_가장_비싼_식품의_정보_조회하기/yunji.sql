@@ -3,7 +3,8 @@ WITH max_price_item AS (
         category,
         MAX(price) AS max_price
     FROM food_product
-    WHERE category IN ('과자', '국', '김치', '식용유')
+    WHERE 1=1
+        AND category IN ('과자', '국', '김치', '식용유')
     GROUP BY category
 )
 
