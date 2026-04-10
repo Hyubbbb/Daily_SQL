@@ -8,7 +8,7 @@ WITH sales AS (
 
 SELECT product_code, price * amount AS sales
 FROM product 
-JOIN sales
-    ON product.product_id = sales.product_id
+    JOIN sales
+        ON product.product_id = sales.product_id
 ORDER BY sales DESC, product_code
 
