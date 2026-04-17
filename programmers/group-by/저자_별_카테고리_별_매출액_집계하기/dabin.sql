@@ -9,12 +9,11 @@ FROM book AS b
         ON b.author_id = a.author_id
     JOIN book_sales AS bs
         ON b.book_id = bs.book_id
-WHERE bs.sales_date >= '2022-01-01'
+WHERE 1=1
+  AND bs.sales_date >= '2022-01-01'
   AND bs.sales_date < '2022-02-01'
 GROUP BY
     b.author_id,
     a.author_name,
     b.category
-ORDER BY
-    b.author_id,
-    b.category DESC;
+ORDER BY b.author_id,b.category DESC;
