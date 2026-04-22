@@ -9,3 +9,4 @@ WHERE 1=1
     AND gender = 'w'
     AND tlno IS NOT NULL
 ORDER BY member_id;
+
