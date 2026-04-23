@@ -19,19 +19,20 @@ csharp AS (
 grade_table AS (
     SELECT 
         CASE
-            WHEN (d.skill_code & f.frontend !=0) AND (d.skill_code & p.python !=0) THEN 'A'
-            WHEN (d.skill_code & c.csharp !=0) THEN 'B'
-            WHEN (d.skill_code & f.frontend !=0) THEN 'C'
+            WHEN (d.skill_code & f.frontend !=0)
+                AND (d.skill_code & p.python !=0)
+                THEN 'A'
+            WHEN (d.skill_code & c.csharp !=0)
+                THEN 'B'
+            WHEN (d.skill_code & f.frontend !=0)
+                THEN 'C'
         END AS grade,
         d.id,
         d.email
     FROM developers AS d
-        JOIN frontend AS f
-            ON 1=1
-        JOIN python AS p
-            ON 1=1
-        JOIN csharp AS c
-            ON 1=1
+        CROSS JOIN frontend AS f
+        CROSS JOIN python AS p
+        CROSS JOIN csharp AS c
 )
 
 SELECT
