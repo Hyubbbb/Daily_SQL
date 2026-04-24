@@ -8,7 +8,6 @@ WITH RECURSIVE hours AS(
     WHERE 1=1
         AND hour < 23
 )
-
 SELECT
     h.hour,
     COUNT(ao.DATETIME) AS count
