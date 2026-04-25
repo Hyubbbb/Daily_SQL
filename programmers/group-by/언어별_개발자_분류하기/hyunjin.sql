@@ -1,16 +1,19 @@
 WITH graded AS (
     SELECT 
         CASE 
-            WHEN (SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End')) 
-                 AND (SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'Python')) THEN 'A'
-            WHEN (SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'C#')) THEN 'B'
-            WHEN (SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End')) THEN 'C'
+            WHEN (skill_code & (SELECT SUM(s.code) FROM skillcodes WHERE category = 'Front End')) 
+                 AND (skill_code & (SELECT code FROM skillcodes WHERE name = 'Python')) 
+                 THEN 'A'
+            WHEN (skill_code & (SELECT code FROM skillcodes WHERE name = 'C#')) 
+                 THEN 'B'
+            WHEN (skill_code & (SELECT SUM(code) FROM skillcodes WHERE category = 'Front End')) 
+                 THEN 'C'
             ELSE NULL 
         END AS 
-        GRADE,
-        ID, 
-        EMAIL
-    FROM DEVELOPERS
+        grade,
+        id, 
+        email
+    FROM developers
 )
 
 SELECT 
@@ -18,5 +21,6 @@ SELECT
    g.id,
    g.email
 FROM graded AS g
-WHERE GRADE IS NOT NULL
-ORDER BY GRADE ASC, ID ASC
+WHERE 1=1
+  AND g.grade IS NOT NULL
+ORDER BY g.grade, g.id
