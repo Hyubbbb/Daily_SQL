@@ -2,19 +2,22 @@ WITH frontend_skill AS (
   SELECT
     SUM(sc.code) AS frontend_code
   FROM skillcodes AS sc
-  WHERE sc.category = 'Front End'
+  WHERE 1=1
+    AND sc.category = 'Front End'
 ),
 python_skill AS (
   SELECT
     sc.code AS python_code
   FROM skillcodes AS sc
-  WHERE sc.name = 'Python'
+  WHERE 1=1
+    AND sc.name = 'Python'
 ),
 csharp_skill AS (
   SELECT
     sc.code AS csharp_code
   FROM skillcodes AS sc
-  WHERE sc.name = 'C#'
+  WHERE 1=1
+    AND sc.name = 'C#'
 ),
 developer_grade AS (
   SELECT
@@ -37,5 +40,6 @@ SELECT
   dg.id AS id,
   dg.email AS email
 FROM developer_grade AS dg
-WHERE dg.grade IS NOT NULL
+WHERE 1=1
+  AND dg.grade IS NOT NULL
 ORDER BY grade, id;
