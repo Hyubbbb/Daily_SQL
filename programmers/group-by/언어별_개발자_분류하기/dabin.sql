@@ -24,9 +24,12 @@ classified AS (
     SELECT
         CASE
             WHEN d.skill_code & f.frontend_code > 0
-             AND d.skill_code & p.python_code > 0 THEN 'A'
-            WHEN d.skill_code & c.csharp_code > 0 THEN 'B'
-            WHEN d.skill_code & f.frontend_code > 0 THEN 'C'
+                AND d.skill_code & p.python_code > 0 
+                THEN 'A'
+            WHEN d.skill_code & c.csharp_code > 0 
+                THEN 'B'
+            WHEN d.skill_code & f.frontend_code > 0 
+                THEN 'C'
         END AS grade,
         d.id,
         d.email
