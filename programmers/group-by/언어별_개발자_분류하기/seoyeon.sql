@@ -23,9 +23,12 @@ developer_grade AS (
   SELECT
     CASE
       WHEN (d.skill_code & fs.frontend_code) > 0
-        AND (d.skill_code & ps.python_code) > 0 THEN 'A'
-      WHEN (d.skill_code & cs.csharp_code) > 0 THEN 'B'
-      WHEN (d.skill_code & fs.frontend_code) > 0 THEN 'C'
+        AND (d.skill_code & ps.python_code) > 0
+        THEN 'A'
+      WHEN (d.skill_code & cs.csharp_code) > 0
+        THEN 'B'
+      WHEN (d.skill_code & fs.frontend_code) > 0
+        THEN 'C'
     END AS grade,
     d.id AS id,
     d.email AS email
