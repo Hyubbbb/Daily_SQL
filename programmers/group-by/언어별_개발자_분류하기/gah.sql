@@ -1,16 +1,26 @@
 WITH skill AS (
     SELECT
-        MAX(CASE WHEN name = 'Python' THEN CODE END) AS python,
-        MAX(CASE WHEN name = 'C#' THEN CODE END) AS csharp,
-        SUM(CASE WHEN category = 'Front End' THEN CODE ELSE 0 END) AS frontend
+        MAX(CASE WHEN name = 'Python'
+                    THEN code
+            END) AS python,
+        MAX(CASE WHEN name = 'C#'
+                    THEN code
+            END) AS csharp,
+        SUM(CASE WHEN category = 'Front End'
+                    THEN code
+                 ELSE 0
+            END) AS frontend
     FROM skillcodes
 )
 
 SELECT
     CASE WHEN (d.skill_code & s.frontend) > 0 
-            AND (d.skill_code & s.python) > 0 THEN 'A'
-         WHEN (d.skill_code & s.csharp) > 0 THEN 'B'
-         WHEN (d.skill_code & s.frontend) > 0 THEN 'C'
+            AND (d.skill_code & s.python) > 0
+            THEN 'A'
+         WHEN (d.skill_code & s.csharp) > 0
+            THEN 'B'
+         WHEN (d.skill_code & s.frontend) > 0
+            THEN 'C'
     END AS grade,
     d.id,
     d.email
