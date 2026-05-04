@@ -7,7 +7,8 @@ WITH RECURSIVE hours AS (
     -- 이후 반복해서 23시까지 행 새로 생성 로직
     SELECT hour + 1
     FROM hours
-    WHERE hour < 23
+    WHERE 1=1
+        AND hour < 23
 )
 SELECT
     h.hour AS hour,
