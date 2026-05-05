@@ -5,7 +5,8 @@ WITH RECURSIVE hour_list AS (
   SELECT
     hl.hour + 1 AS hour
   FROM hour_list AS hl
-  WHERE hl.hour < 23
+  WHERE 1=1
+    AND hl.hour < 23
 ),
 adoption_by_hour AS (
   SELECT
