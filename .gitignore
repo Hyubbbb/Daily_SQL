@@ -43,3 +43,12 @@ README_backup_*.md
 *.temp 
 
 과거_제출현황.md
+
+# Dashboard
+dashboard/node_modules/
+dashboard/.next/
+dashboard/out/
+dashboard/src/data/index.json
+dashboard/.env.local
+
+.omc/
