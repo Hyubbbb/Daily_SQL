@@ -5,8 +5,7 @@ WITH tree AS (
             info.rarity
     FROM item_tree AS tree
     JOIN item_info AS info
-        ON tree.item_id = info.item_id
-        )
+        ON tree.item_id = info.item_id)
         
 SELECT tree.item_id,
         tree.item_name,
