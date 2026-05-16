@@ -15,5 +15,4 @@ FROM item_info AS info
         ON info.item_id = tree.item_id
     INNER JOIN rare_item AS rare
         ON tree.parent_item_id = rare.item_id
-WHERE 1=1
 ORDER BY info.item_id DESC;
