@@ -8,4 +8,4 @@ JOIN item_info
 JOIN rare_items
     ON item_tree.parent_item_id = rare_items.item_id
 ORDER BY
-    item_tree.item_id DESC
+    item_tree.item_id DESC 
