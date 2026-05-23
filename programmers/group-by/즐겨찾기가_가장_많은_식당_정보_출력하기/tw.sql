@@ -16,3 +16,4 @@ FROM rest_info AS rest
         ON rest.favorites = fav.max_favorites
         AND rest.food_type = fav.food_type
 ORDER BY rest.food_type DESC
+
