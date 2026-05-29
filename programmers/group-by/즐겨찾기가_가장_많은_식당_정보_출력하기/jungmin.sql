@@ -14,5 +14,5 @@ SELECT
 FROM rest_info AS rest
     JOIN max_fav AS maxf
         ON rest.food_type = maxf.food_type
-        AND rest.favorites = maxf.max_fav
+            AND rest.favorites = maxf.max_fav
 ORDER BY rest.food_type DESC;
