@@ -1,4 +1,5 @@
-SELECT food_type, 
+SELECT 
+       food_type, 
        rest_id, 
        rest_name, 
        favorites
