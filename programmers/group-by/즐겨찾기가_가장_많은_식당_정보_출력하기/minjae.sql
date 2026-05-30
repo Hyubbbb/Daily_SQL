@@ -12,7 +12,7 @@ SELECT
     info.rest_name,
     info.favorites
 FROM rest_info AS info
-    INNER JOIN max_favorites AS max_fav
-        ON info.food_type = max_fav.food_type
-        AND info.favorites = max_fav.max_fav
+    INNER JOIN max_favorites AS max_fav_dt
+        ON info.food_type = max_fav_dt.food_type
+            AND info.favorites = max_fav_dt.max_fav
 ORDER BY info.food_type DESC;
