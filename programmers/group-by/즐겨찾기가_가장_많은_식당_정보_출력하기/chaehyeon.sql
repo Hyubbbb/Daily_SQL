@@ -6,8 +6,9 @@ WITH best AS (
     GROUP BY food_type
 )
 
+	
 SELECT 
-       info.food_type,
+       info.food_type,  
        info.rest_id,
        info.rest_name,
        info.favorites
