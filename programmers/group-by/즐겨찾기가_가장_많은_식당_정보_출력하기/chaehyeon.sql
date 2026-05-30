@@ -1,19 +1,19 @@
 WITH best AS (
     SELECT 
 	   food_type,
-           MAX(favorites) AS max_fav
+       MAX(favorites) AS max_fav
     FROM rest_info
     GROUP BY food_type
 )
 
 SELECT 
-       rest.food_type,
-       rest.rest_id,
-       rest.rest_name,
-       rest.favorites
-FROM rest_info AS rest
+       info.food_type,
+       info.rest_id,
+       info.rest_name,
+       info.favorites
+FROM rest_info AS info
 	JOIN best AS b
-    		ON rest.food_type = b.food_type
-  		AND rest.favorites = b.max_fav
-GROUP BY rest.food_type
-ORDER BY rest.food_type DESC;
+    	ON info.food_type = b.food_type
+  			AND info.favorites = b.max_fav
+GROUP BY info.food_type
+ORDER BY info.food_type DESC;
