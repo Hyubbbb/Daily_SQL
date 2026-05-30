@@ -1,8 +1,8 @@
 SELECT 
-       food_type, 
-       rest_id, 
-       rest_name, 
-       favorites
+     food_type, 
+     rest_id, 
+     rest_name, 
+     favorites
 FROM rest_info 
 WHERE 1=1
     AND (food_type, favorites) IN (
