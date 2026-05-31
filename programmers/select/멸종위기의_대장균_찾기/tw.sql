@@ -27,7 +27,7 @@ child_count AS (
         parent.id AS id,
         COUNT(child.id) AS child_count
     FROM ecoli_data AS parent
-        JOIN ecoli_data AS child
+        LEFT JOIN ecoli_data AS child
             ON parent.id = child.parent_id
     GROUP BY parent.id
 )
