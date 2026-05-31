@@ -27,4 +27,4 @@ FROM parent
 WHERE 1=1
     AND id IS NULL
 GROUP BY id, generation
-ORDER BY generation
+ORDER BY generation;
