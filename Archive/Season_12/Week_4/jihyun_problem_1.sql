@@ -6,4 +6,4 @@ SELECT
 FROM food_factory AS f_factory
 WHERE 1=1
     AND address LIKE '강원도%'
-ORDER BY factory_id
+ORDER BY factory_id;
