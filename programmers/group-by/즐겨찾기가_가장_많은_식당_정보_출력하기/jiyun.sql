@@ -7,12 +7,12 @@ WITH most_favor AS (
 )
 
 SELECT 
-    ri.food_type,
-    ri.rest_id,
-    ri.rest_name,
-    ri.favorites
-FROM rest_info ri
-    INNER JOIN most_favor mf
-        ON ri.food_type = mf.food_type
-        AND ri.favorites = mf.favorites
-ORDER BY ri.food_type DESC
+    rest.food_type,
+    rest.rest_id,
+    rest.rest_name,
+    rest.favorites
+FROM rest_info rest
+    INNER JOIN most_favor favor
+        ON rest.food_type = favor.food_type
+            AND rest.favorites = favor.favorites
+ORDER BY rest.food_type DESC
