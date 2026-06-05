@@ -19,13 +19,14 @@ WITH RECURSIVE generation AS (
 SELECT
     COUNT(id) AS count,
     generation
-FROM generation gen
+FROM generation AS gen
 WHERE 1=1
     AND NOT EXISTS (
         SELECT 
             id
         FROM ecoli_data
-        WHERE parent_id = gen.id
+        WHERE 1=1
+            AND parent_id = gen.id
     )
 GROUP BY generation
 ORDER BY generation
