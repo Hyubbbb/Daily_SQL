@@ -12,7 +12,7 @@ WITH RECURSIVE parent AS (
     SELECT 
         ed.id, 
         ed.parent_id, 
-        p.generation + 1
+        p.generation + 1 AS generation
     FROM parent AS p
     LEFT OUTER JOIN ecoli_data AS ed
         ON p.id = ed.parent_id
