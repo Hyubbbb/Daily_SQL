@@ -4,7 +4,8 @@ WITH RECURSIVE generation_data AS (
         parent_id, 
         1 AS generation
     FROM ecoli_data
-    WHERE parent_id IS NULL
+    WHERE 1=1
+        AND parent_id IS NULL
 
     UNION ALL
 
@@ -25,4 +26,4 @@ FROM generation_data AS gen
         ON gen.id = parent_check.parent_id 
 WHERE parent_check.parent_id IS NULL
 GROUP BY gen.generation
-ORDER BY gen.generation ASC;
+ORDER BY gen.generation;
