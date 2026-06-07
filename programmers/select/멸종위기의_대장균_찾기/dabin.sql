@@ -35,5 +35,4 @@ WHERE 1 = 1
     AND pt.parent_id IS NULL
 GROUP BY
     tmp.generation
-ORDER BY
-    tmp.generation;
+ORDER BY tmp.generation
