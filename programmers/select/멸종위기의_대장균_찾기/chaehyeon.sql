@@ -11,9 +11,9 @@ WITH RECURSIVE ecoli AS (
     SELECT 
         e.id,
         e.parent_id,
-        r.generation + 1
-    FROM ecoli_data e
-        JOIN ecoli r
+        r.generation + 1 AS next_gen
+    FROM ecoli_data AS e
+        JOIN ecoli AS r
             ON e.parent_id = r.id
 )
 
