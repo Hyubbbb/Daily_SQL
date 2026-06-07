@@ -13,7 +13,7 @@ WITH RECURSIVE gen_table AS (
     SELECT
         ecoli.id,
         ecoli.parent_id,
-        gen.generation + 1
+        gen.generation + 1 AS generation
     FROM ecoli_data AS ecoli
         JOIN gen_table AS gen
             ON ecoli.parent_id = gen.id
