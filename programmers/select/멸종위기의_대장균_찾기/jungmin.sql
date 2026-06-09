@@ -6,7 +6,8 @@ WITH RECURSIVE gen_table AS (
         parent_id,
         1 AS generation
     FROM ecoli_data
-    WHERE parent_id IS NULL 
+    WHERE 1=1
+        AND parent_id IS NULL 
     
     UNION ALL
     
