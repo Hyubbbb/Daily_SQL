@@ -14,8 +14,8 @@ SELECT
     COUNT(history.history_id) AS records
 FROM car_rental_company_rental_history AS history
     INNER JOIN popular_cars AS car_table
-    ON history.car_id = car_table.car_id
+        ON history.car_id = car_table.car_id
 WHERE 1=1
     AND history.start_date BETWEEN '2022-08-01' AND '2022-10-31'
-GROUP BY MONTH(history.start_date), history.car_id
-ORDER BY month ASC, history.car_id DESC;
+GROUP BY month, history.car_id
+ORDER BY month, history.car_id DESC;
