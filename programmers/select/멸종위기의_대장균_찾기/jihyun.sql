@@ -14,8 +14,8 @@ WITH RECURSIVE parent AS (
         ed.parent_id, 
         p.generation + 1 AS generation
     FROM parent AS p
-    LEFT OUTER JOIN ecoli_data AS ed
-        ON p.id = ed.parent_id
+        LEFT OUTER JOIN ecoli_data AS ed
+            ON p.id = ed.parent_id
     WHERE 1=1
         AND p.id IS NOT NULL
 )
