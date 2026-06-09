@@ -24,6 +24,7 @@ SELECT
 FROM generation_data AS gen 
     LEFT JOIN ecoli_data AS parent_check 
         ON gen.id = parent_check.parent_id 
-WHERE parent_check.parent_id IS NULL
+WHERE 1=1
+    AND parent_check.parent_id IS NULL
 GROUP BY gen.generation
 ORDER BY gen.generation;
