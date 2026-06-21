@@ -12,8 +12,8 @@ SELECT
     ugu.nickname,
     SUM(cs.price) AS total_sales
 FROM used_goods_user AS ugu
-INNER JOIN completed_sales AS cs
-    ON ugu.user_id = cs.writer_id
+    INNER JOIN completed_sales AS cs
+        ON ugu.user_id = cs.writer_id
 GROUP BY 
     ugu.user_id,
     ugu.nickname
