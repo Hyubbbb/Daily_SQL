@@ -1,17 +1,17 @@
 -- 연간 평가점수에 해당하는 평가 등급 및 성과금 조회하기
 WITH employee_avg_grade AS (
     SELECT
-        e.emp_no,
-        e.emp_name,
-        e.sal,
+        emp.emp_no,
+        emp.emp_name,
+        emp.sal,
         AVG(g.score) AS avg_score
-    FROM hr_employees AS e
-        INNER JOIN hr_grade AS g
-            ON e.emp_no = g.emp_no
+    FROM hr_employees AS emp
+        INNER JOIN hr_grade AS grade
+            ON emp.emp_no = grade.emp_no
     GROUP BY
-        e.emp_no,
-        e.emp_name,
-        e.sal
+        emp.emp_no,
+        emp.emp_name,
+        emp.sal
 )
 
 SELECT
