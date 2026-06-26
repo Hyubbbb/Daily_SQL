@@ -17,17 +17,17 @@ WITH score_tbl AS (
 SELECT 
     employee.emp_no, 
     employee.emp_name, 
-    score_tbl.grade,
+    score.grade,
     CASE
-        WHEN score_tbl.grade = 'S'
+        WHEN score.grade = 'S'
             THEN employee.sal * 0.2
-        WHEN score_tbl.grade = 'A'
+        WHEN score.grade = 'A'
             THEN employee.sal * 0.15
-        WHEN score_tbl.grade = 'B'
+        WHEN score.grade = 'B'
             THEN employee.sal * 0.1
         ELSE 0
     END AS bonus
 FROM hr_employees AS employee 
-    LEFT JOIN score_tbl 
-        ON employee.emp_no = score_tbl.emp_no
+    JOIN score_tbl AS score
+        ON employee.emp_no = score.emp_no
 ORDER BY employee.emp_no
