@@ -3,10 +3,10 @@ WITH employee_avg_grade AS (
         emp.emp_no,
         emp.emp_name,
         emp.sal,
-        AVG(g.score) AS avg_score
+        AVG(grade.score) AS avg_score
     FROM hr_employees AS emp
-        INNER JOIN hr_grade AS g
-            ON emp.emp_no = g.emp_no
+        INNER JOIN hr_grade AS grade
+            ON emp.emp_no = grade.emp_no
     GROUP BY
         emp.emp_no,
         emp.emp_name,
