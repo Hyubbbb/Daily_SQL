@@ -19,8 +19,8 @@ SELECT
             THEN employees.sal * 0.1
         ELSE 0
     END AS bonus
-FROM hr_employees employees
-    JOIN hr_grade grade
+FROM hr_employees AS employees
+    JOIN hr_grade AS grade
         ON employees.emp_no = grade.emp_no
 GROUP BY employees.emp_no
 ORDER BY employees.emp_no
