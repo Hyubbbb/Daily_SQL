@@ -1,8 +1,8 @@
 SELECT
-    ai.animal_id,
-    ai.name
-FROM animal_ins AS ai
-    INNER JOIN animal_outs AS ao
-        ON ai.animal_id = ao.animal_id
-ORDER BY DATEDIFF(ao.datetime, ai.datetime) DESC
+    ins.animal_id,
+    ins.name
+FROM animal_ins AS ins
+    INNER JOIN animal_outs AS outs
+        ON ins.animal_id = outs.animal_id
+ORDER BY DATEDIFF(outs.datetime, ins.datetime) DESC
 LIMIT 2;
