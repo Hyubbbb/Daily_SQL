@@ -8,5 +8,4 @@ WHERE 1 = 1
     AND car.car_type = '세단'
     AND hist.start_date >= '2022-10-01'
     AND hist.start_date < '2022-11-01'
-ORDER BY
-    car.car_id DESC;
+ORDER BY car.car_id DESC;
