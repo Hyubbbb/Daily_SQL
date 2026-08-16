@@ -5,5 +5,5 @@ SELECT
 FROM hr_employees AS emp
     JOIN hr_department AS dep
         ON emp.dept_id = dep.dept_id
-GROUP BY emp.dept_id
+GROUP BY emp.dept_id, emp.dept_name_en
 ORDER BY avg_sal DESC;
