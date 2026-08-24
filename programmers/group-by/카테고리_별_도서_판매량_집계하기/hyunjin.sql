@@ -8,4 +8,4 @@ WHERE 1=1
     AND bs.sales_date <= '2022-01-31' 
     AND bs.sales_date >= '2022-01-01'
 GROUP BY b.category
-ORDER BY b.category ASC
+ORDER BY b.category
