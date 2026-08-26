@@ -6,9 +6,9 @@ SELECT
     CASE
         WHEN status = 'SALE'
             THEN '판매중'
-            WHEN status = 'RESERVED'
+        WHEN status = 'RESERVED'
             THEN '예약중'
-            WHEN status = 'DONE'
+        WHEN status = 'DONE'
             THEN '거래완료'
     END AS status
 FROM used_goods_board
