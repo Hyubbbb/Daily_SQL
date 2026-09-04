@@ -18,7 +18,9 @@
 
 1. Repository Clone 또는 Pull로 최신 상태 유지
 2. (1)문항에 해당하는 플랫폼, (2)문제 카테고리 디렉토리에 맞추어 쿼리 업로드
-     - **공통 문제 쿼리 제출**: `Daily_SQL/{출처}/{문제_카테고리}/{문제명}/이름.sql`
+     - **공통 문제 쿼리 제출**: 
+       - Programmers: `Daily_SQL/programmers/{문제_카테고리}/{문제명}/이름.sql`
+       - SolveSQL: `Daily_SQL/solvesql/{문제명}/이름.sql`
      - **개별 문제 쿼리 제출**: `Daily_SQL/Archive/Season_s/Week_N/이름_problem_k.sql`
 3. Commit Message: 아래 양식으로 제출
 ```
