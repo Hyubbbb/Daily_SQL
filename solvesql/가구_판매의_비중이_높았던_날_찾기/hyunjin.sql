@@ -1,13 +1,13 @@
 WITH summary AS (
-  SELECT 
-      order_date,
-      COUNT(*) AS total_cnt,
-      COUNT(CASE 
-                WHEN category = 'Furniture' 
-                    THEN 1 
-            END) AS furniture
-  FROM records
-  GROUP BY order_date
+    SELECT 
+        order_date,
+        COUNT(DISTINCT order_id) AS total_cnt,
+        COUNT(DISTINCT CASE 
+                           WHEN category = 'Furniture' 
+                               THEN 1 
+                       END) AS furniture
+    FROM records
+    GROUP BY order_date
 )
 
 SELECT
