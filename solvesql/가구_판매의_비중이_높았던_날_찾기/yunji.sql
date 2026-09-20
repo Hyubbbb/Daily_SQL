@@ -16,12 +16,12 @@ WITH fur AS (
 )
 
 SELECT
-    tot.order_date,
-    fur.fur_num AS furniture,
-    ROUND(fur.fur_num * 100.0 / tot.total_num, 2) AS furniture_pct
-FROM tot
-    INNER JOIN fur
-        ON tot.order_date = fur.order_date
+    t.order_date,
+    f.fur_num AS furniture,
+    ROUND(f.fur_num * 100.0 / t.total_num, 2) AS furniture_pct
+FROM tot AS t
+    INNER JOIN fur AS f
+        ON t.order_date = f.order_date
 WHERE 1=1
-    AND fur.fur_num * 100.0 / tot.total_num >= 40
+    AND f.fur_num * 100.0 / t.total_num >= 40
 ORDER BY furniture_pct DESC, order_date;
