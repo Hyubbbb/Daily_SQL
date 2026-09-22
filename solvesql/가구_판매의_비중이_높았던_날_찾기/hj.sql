@@ -2,13 +2,13 @@ WITH daily_count AS (
     SELECT
         order_date,
         COUNT(DISTINCT CASE 
-                          WHEN category = 'Furniture' 
-                              THEN order_id 
-                      END) AS furniture,
+                           WHEN category = 'Furniture' 
+                               THEN order_id 
+                       END) AS furniture,
         COUNT(DISTINCT order_id) AS total_order
     FROM records
     GROUP BY order_date
-  )
+)
 SELECT
     order_date,
     furniture,
