@@ -18,4 +18,4 @@ FROM summary
 WHERE 1=1
     AND total_cnt >= 10
     AND (furniture * 100.0 / total_cnt) >= 40
-ORDER BY furniture_pct DESC, order_date ASC
+ORDER BY furniture_pct DESC, order_date
