@@ -16,11 +16,11 @@ SELECT
         END) AS professor,
     MAX(CASE 
             WHEN occupation = 'Singer' 
-                THEN Name 
+                THEN name 
         END) AS singer,
     MAX(CASE 
             WHEN occupation = 'Actor' 
-                THEN Name 
+                THEN name 
         END) AS actor
 FROM ranked
 GROUP BY rn
