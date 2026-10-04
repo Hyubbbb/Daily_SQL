@@ -1,7 +1,8 @@
 WITH parent_node AS (
     SELECT DISTINCT p
     FROM bst
-    WHERE p IS NOT NULL
+    WHERE 1=1
+        AND p IS NOT NULL
 )
 SELECT
     b.n,
