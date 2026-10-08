@@ -6,13 +6,13 @@ SELECT
     COUNT(DISTINCT m.manager_code),
     COUNT(DISTINCT e.employee_code)
 FROM company AS c
-    LEFT JOIN Lead_Manager AS lm
+    LEFT JOIN lead_manager AS lm
         ON c.company_code = lm.company_code
-    LEFT JOIN Senior_Manager AS sm
+    LEFT JOIN senior_manager AS sm
         ON c.company_code = sm.company_code
-    LEFT JOIN Manager AS m
+    LEFT JOIN manager AS m
         ON c.company_code = m.company_code
-    LEFT JOIN Employee AS e
+    LEFT JOIN employee AS e
         ON c.company_code = e.company_code
 GROUP BY c.company_code, c.founder
 ORDER BY c.company_code
