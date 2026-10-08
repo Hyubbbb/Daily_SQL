@@ -12,7 +12,7 @@ FROM company AS c
         ON lm.lead_manager_code = sm.lead_manager_code
     LEFT JOIN manager AS m
         ON sm.senior_manager_code = m.senior_manager_code
-    LEFT JOIN Employee AS e
+    LEFT JOIN employee AS e
         ON m.manager_code = e.manager_code
 GROUP BY c.company_code, c.founder
 ORDER BY c.company_code;
