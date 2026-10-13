@@ -10,7 +10,7 @@ WITH cat AS (
 SELECT
     region AS region,
     SUM(category = 'Furniture') AS furniture,
-    SUM(category = 'Office Supplies') AS `office Supplies`,
+    SUM(category = 'Office Supplies') AS `office supplies`,
     SUM(category = 'Technology') AS technology
 FROM cat
 GROUP BY region
