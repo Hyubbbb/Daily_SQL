@@ -14,5 +14,5 @@ SELECT
     total_bill
 FROM ranked
 WHERE 1=1
-  AND bill_rank <= 3
+    AND bill_rank <= 3
 ORDER BY day, total_bill DESC;
